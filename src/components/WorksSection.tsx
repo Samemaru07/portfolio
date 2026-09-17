@@ -1,0 +1,265 @@
+"use client";
+
+import React, { useState, useEffect } from "react";
+import { projects } from "@/data/projects";
+import { Project } from "@/types";
+
+interface ModalProps {
+    project: Project;
+    onClose: () => void;
+}
+
+function ProjectModal({ project, onClose }: ModalProps) {
+    useEffect(() => {
+        const handleKeyDown = (e: KeyboardEvent) => {
+            if (e.key === "Escape") onClose();
+        };
+        document.body.style.overflow = "hidden";
+        window.addEventListener("keydown", handleKeyDown);
+
+        return () => {
+            document.body.style.overflow = "";
+            window.removeEventListener("keydown", handleKeyDown);
+        };
+    }, [onClose]);
+
+    return (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/60 backdrop-blur-sm transition-opacity duration-200">
+            <div className="absolute inset-0" onClick={onClose} />
+
+            <div className="relative w-full max-w-5xl bg-white dark:bg-[#1E1D1B] rounded-2xl sm:rounded-3xl shadow-2xl border border-black/10 dark:border-white/10 overflow-hidden flex flex-col max-h-[90vh] z-10 animate-in fade-in zoom-in-95 duration-200">
+                {/* Modal Header */}
+                <div className="px-6 sm:px-8 py-3.5 bg-neutral-100/80 dark:bg-[#161514] border-b border-black/5 dark:border-white/5 flex items-center justify-between select-none">
+                    <span className="text-xs sm:text-sm font-sans font-medium text-neutral-500 dark:text-neutral-400">
+                        {project.topTitle}
+                    </span>
+                    <button
+                        onClick={onClose}
+                        type="button"
+                        aria-label="閉じる"
+                        className="w-7 h-7 rounded-full flex items-center justify-center text-neutral-400 hover:text-black dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/10 transition"
+                    >
+                        <svg
+                            className="w-4 h-4"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                        >
+                            <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth="2"
+                                d="M6 18L18 6M6 6l12 12"
+                            />
+                        </svg>
+                    </button>
+                </div>
+
+                {/* Modal Body */}
+                <div className="p-6 sm:p-8 md:p-10 overflow-y-auto grid grid-cols-1 lg:grid-cols-12 gap-8 text-[#2C2927] dark:text-[#EAE6E1]">
+                    {/* Left Column: Description & TechStack */}
+                    <div className="lg:col-span-7 space-y-6 flex flex-col justify-between">
+                        <div className="space-y-4">
+                            <div className="flex items-center justify-between flex-wrap gap-3">
+                                <h3 className="text-xl sm:text-2xl font-bold tracking-tight text-[#2C2927] dark:text-white">
+                                    概要
+                                </h3>
+                                {project.repoUrl && (
+                                    <a
+                                        href={project.repoUrl}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 text-xs font-mono font-medium hover:opacity-90 transition shadow-sm"
+                                    >
+                                        <span>GitHub Repository</span>
+                                        <span className="text-[11px]">↗</span>
+                                    </a>
+                                )}
+                            </div>
+
+                            <div className="space-y-3 text-xs sm:text-sm text-[#4D4945] dark:text-neutral-300 leading-relaxed font-sans">
+                                {project.description.map((paragraph, index) => (
+                                    <p key={index}>{paragraph}</p>
+                                ))}
+                            </div>
+                        </div>
+
+                        {/* Tech Stack */}
+                        <div className="space-y-2 pt-4 border-t border-black/5 dark:border-white/5">
+                            <h4 className="text-sm font-bold tracking-tight text-[#2C2927] dark:text-white">
+                                使用言語・技術など
+                            </h4>
+                            <p className="text-xs sm:text-sm text-[#4D4945] dark:text-neutral-300 font-sans">
+                                {project.techStack}
+                            </p>
+                        </div>
+                    </div>
+
+                    {/* Right Column: Image Preview */}
+                    <div className="lg:col-span-5 flex flex-col justify-start">
+                        <div className="rounded-2xl overflow-hidden bg-warm-100/70 dark:bg-[#161514] border border-black/5 dark:border-white/5 p-3 flex flex-col gap-2">
+                            <div className="aspect-[4/3] sm:aspect-[16/10] lg:aspect-[3/4] rounded-xl overflow-hidden bg-white dark:bg-neutral-800 border border-black/5 dark:border-white/5 relative flex items-center justify-center shadow-sm">
+                                <img
+                                    src={project.imageUrl}
+                                    alt={project.topTitle}
+                                    className="w-full h-full object-cover object-top"
+                                    onError={(e) => {
+                                        (
+                                            e.currentTarget as HTMLImageElement
+                                        ).src =
+                                            "https://placehold.co/800x1000/252422/ffffff?text=Preview+Image";
+                                    }}
+                                />
+                            </div>
+                            {project.imageCaption && (
+                                <p className="text-[11px] font-mono text-center text-neutral-400 truncate px-1">
+                                    {project.imageCaption}
+                                </p>
+                            )}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+}
+
+export default function WorksSection() {
+    const [selectedProject, setSelectedProject] = useState<Project | null>(
+        null,
+    );
+
+    return (
+        <section
+            id="works"
+            className="pt-12 border-t border-black/5 dark:border-white/5 space-y-6 scroll-mt-20"
+        >
+            {/* Header */}
+            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+                <div className="space-y-1">
+                    <h3 className="text-2xl font-bold text-[#2C2927] dark:text-white">
+                        制作物
+                    </h3>
+                    <p className="text-xs sm:text-sm text-[#6B6560] dark:text-neutral-400 leading-relaxed pt-0.5">
+                        個人開発や学内で制作・改善してきたシステムや成果物です。運用のしやすさと課題解決を重視して設計しています。
+                    </p>
+                </div>
+                <span className="text-xs font-mono text-neutral-400 shrink-0 hidden sm:inline-block">
+                    Total: {projects.length} projects
+                </span>
+            </div>
+
+            {/* Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {projects.map((project) => {
+                    const isWip = project.isWip;
+                    const displayThumbnail =
+                        project.thumbnailUrl || project.imageUrl;
+
+                    return (
+                        <div
+                            key={project.id}
+                            onClick={() => setSelectedProject(project)}
+                            className={`cursor-pointer p-6 rounded-2xl border transition flex flex-col justify-between group ${
+                                isWip
+                                    ? "bg-white/40 dark:bg-[#252422]/50 border-dashed border-black/15 dark:border-white/15 hover:border-black/30 dark:hover:border-white/30"
+                                    : "bg-white/70 dark:bg-[#252422] border-black/5 dark:border-white/5 shadow-sm hover:shadow-md hover:-translate-y-1"
+                            }`}
+                        >
+                            <div className="space-y-3">
+                                {/* Visual Header Box: サムネイル画像プレビュー */}
+                                <div className="relative h-36 rounded-xl overflow-hidden bg-warm-100 dark:bg-[#1E1D1B] border border-black/5 dark:border-white/5">
+                                    {isWip ? (
+                                        <div className="w-full h-full flex flex-col items-center justify-center text-xs font-mono gap-1 text-center p-3 text-neutral-400 bg-black/[0.02] dark:bg-white/[0.02]">
+                                            <span className="text-xl animate-pulse">
+                                                {project.icon}
+                                            </span>
+                                            <span className="text-[11px] font-bold text-[#2C2927] dark:text-neutral-200">
+                                                {project.categoryBadge}
+                                            </span>
+                                            <span className="text-[10px] text-neutral-400">
+                                                In Development
+                                            </span>
+                                        </div>
+                                    ) : (
+                                        <>
+                                            <img
+                                                src={displayThumbnail}
+                                                alt={project.cardTitle}
+                                                className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300"
+                                                onError={(e) => {
+                                                    (
+                                                        e.currentTarget as HTMLImageElement
+                                                    ).src =
+                                                        "https://placehold.co/600x400/252422/ffffff?text=" +
+                                                        encodeURIComponent(
+                                                            project.categoryBadge,
+                                                        );
+                                                }}
+                                            />
+                                            <div className="absolute top-2.5 left-2.5 px-2 py-0.5 rounded-md bg-black/60 backdrop-blur-md text-white text-[10px] font-mono font-medium shadow-sm">
+                                                {project.categoryBadge}
+                                            </div>
+                                        </>
+                                    )}
+                                </div>
+
+                                {/* Title */}
+                                <h4
+                                    className={`font-bold text-base flex items-center gap-2 group-hover:text-amber-600 dark:group-hover:text-amber-400 transition ${
+                                        isWip
+                                            ? "text-neutral-600 dark:text-neutral-300"
+                                            : "text-[#2C2927] dark:text-white"
+                                    }`}
+                                >
+                                    <span>{project.cardTitle}</span>
+                                    {isWip && (
+                                        <span className="text-[10px] px-2 py-0.5 rounded-full bg-orange-100 dark:bg-orange-950/60 text-orange-600 dark:text-orange-300 font-normal">
+                                            WIP
+                                        </span>
+                                    )}
+                                </h4>
+
+                                {/* Summary */}
+                                <p className="text-xs text-[#6B6560] dark:text-neutral-400 leading-relaxed">
+                                    {project.summary}
+                                </p>
+                            </div>
+
+                            {/* Footer / Tags */}
+                            <div
+                                className={`flex items-center justify-between pt-3 mt-4 border-t ${
+                                    isWip
+                                        ? "border-dashed border-black/10 dark:border-white/10"
+                                        : "border-black/5 dark:border-white/5"
+                                }`}
+                            >
+                                <div className="flex flex-wrap gap-1.5 text-[11px] font-mono text-neutral-500">
+                                    {project.tags.map((tag) => (
+                                        <span
+                                            key={tag}
+                                            className="px-2 py-0.5 rounded bg-warm-100 dark:bg-neutral-800"
+                                        >
+                                            {tag}
+                                        </span>
+                                    ))}
+                                </div>
+                                <span className="text-[11px] font-mono text-amber-600 dark:text-amber-400 flex items-center gap-1 group-hover:underline">
+                                    詳細 ›
+                                </span>
+                            </div>
+                        </div>
+                    );
+                })}
+            </div>
+
+            {/* Modal */}
+            {selectedProject && (
+                <ProjectModal
+                    project={selectedProject}
+                    onClose={() => setSelectedProject(null)}
+                />
+            )}
+        </section>
+    );
+}

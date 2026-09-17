@@ -18,7 +18,7 @@ export const projects: Project[] = [
         tags: ["#LaTeX", "#CI/CD"],
         techStack: "TeX / LaTeX / GitHub Actions",
         repoUrl: "https://github.com/Samemaru07/report-cover_tex",
-        imageUrl: "/images/projects/latex-cover.jpg",
+        imageUrl: "/images/projects/latex-cover.png",
         imageCaption: "実験レポート表紙プレビュー",
     },
     {
@@ -37,7 +37,8 @@ export const projects: Project[] = [
         tags: ["#Next.js", "#TailwindCSS"],
         techStack: "Next.js (React) / TypeScript / Tailwind CSS / Vercel",
         repoUrl: "https://github.com/Samemaru07/portfolio",
-        imageUrl: "/images/projects/portfolio-preview.jpg",
+        imageUrl: "/images/projects/portfolio-preview.png",
+        thumbnailUrl: "/images/projects/portfolio-preview-thumbnail.png",
         imageCaption: "ポートフォリオ 画面プレビュー",
     },
     {
@@ -59,7 +60,8 @@ export const projects: Project[] = [
         techStack:
             "Next.js / Laravel / TailwindCSS / MySQL / AWS / S3 / さくらのVPS",
         repoUrl: "https://github.com/Samemaru07/seichi-diary_pro3-db-2Q",
-        imageUrl: "/images/projects/pilgrimage-preview.jpg",
+        imageUrl: "/images/projects/pilgrimage-preview.png",
+        thumbnailUrl: "/images/projects/pilgrimage-preview-thumbnail.png",
         imageCaption: "ブログサイト ロケーション画面",
     },
     {
@@ -77,6 +79,7 @@ export const projects: Project[] = [
         ],
         tags: ["#LINE-API", "#Automation"],
         techStack: "LINE Messaging API / PHP / MySQL (XAMPP) / ngrok",
+        // TODO: 画像
         repoUrl: "https://github.com/Samemaru07/Kongo_LINE",
         imageUrl: "/images/projects/linebot-preview.jpg",
         imageCaption: "Bot 配信・対話システムイメージ",
@@ -105,7 +108,8 @@ export const projects: Project[] = [
         ],
         techStack: "Terraform / Ansible / GitHub Actions / AWS",
         repoUrl: "https://github.com/Samemaru07/aws-secure-iac",
-        imageUrl: "/images/projects/iac-preview.jpg",
+        imageUrl: "/images/projects/iac-preview.png",
+        thumbnailUrl: "/images/projects/iac-preview-thumbnail.png",
         imageCaption: "インフラ・CI/CD パイプライン構成",
     },
     {
@@ -123,6 +127,7 @@ export const projects: Project[] = [
         tags: ["#Hyper", "#Terminal"],
         techStack: "TypeScript / Node.js",
         repoUrl: null,
+        // TODO: 画像
         imageUrl: "/images/projects/coming-soon.jpg",
         imageCaption: "Hyper-webview-fork",
         isWip: true,
