@@ -46,3 +46,7 @@
         opacity: 0;
     }
 }
+
+.font-script {
+    font-family: var(--font-caveat), cursive;
+}
