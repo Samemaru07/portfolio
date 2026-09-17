@@ -10,7 +10,7 @@ export default function Hero() {
             <div className="absolute top-0 right-0 bottom-0 w-full lg:w-3/5 pointer-events-none select-none overflow-hidden">
                 <div className="relative w-full h-full">
                     <img
-                        src="/images/hero-model.jpg"
+                        src="/images/hero-model.png"
                         alt="My Favorite Plastic Model"
                         className="w-full h-full object-cover object-center lg:object-right filter contrast-[1.05] saturate-[0.9] dark:saturate-[1.1] transform scale-100"
                     />

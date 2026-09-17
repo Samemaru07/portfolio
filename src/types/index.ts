@@ -12,6 +12,7 @@ export interface Project {
     repoUrl: string | null;
     imageUrl: string;
     imageCaption: string;
+    thumbnailUrl?: string;
     isWip?: boolean;
 }
 
