@@ -1,26 +1,48 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* クラスによるダークモード (.dark) を有効化 */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Tailwind v4 テーマ設定（フォント・カラー・シャドウ） */
+@theme {
+    /* フォント定義 */
+    --font-sans: var(--font-zen-kaku), "Noto Sans JP", sans-serif;
+    --font-script: var(--font-caveat), cursive;
+    --font-mono: var(--font-jetbrains-mono), monospace;
+
+    /* カスタムカラー: warm */
+    --color-warm-50: #fdf8f6;
+    --color-warm-100: #faf2ee;
+    --color-warm-200: #f3e5dd;
+
+    /* カスタムカラー: term (ターミナル用) */
+    --color-term-bg: #3a3836;
+    --color-term-border: #4d4a47;
+
+    /* シャドウ定義 */
+    --shadow-terminal:
+        0 20px 40px -15px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(0, 0, 0, 0.06);
+    --shadow-terminal-dark:
+        0 25px 50px -12px rgba(0, 0, 0, 0.6),
+        0 0 0 1px rgba(255, 255, 255, 0.08);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* ターミナル風のカーソル点滅アニメーション */
+.blink-cursor::after {
+    content: "▋";
+    display: inline-block;
+    margin-left: 4px;
+    animation: blink 1.1s infinite;
+    color: #94a3b8;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@keyframes blink {
+    0%,
+    49% {
+        opacity: 1;
+    }
+    50%,
+    100% {
+        opacity: 0;
+    }
 }
