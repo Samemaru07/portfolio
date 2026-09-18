@@ -148,7 +148,6 @@ export default function ProfileSection() {
             >
                 <div className="space-y-1">
                     <div className="flex items-center gap-2">
-                        <span className="w-2 h-2 rounded-full bg-emerald-500" />
                         <h4 className="text-lg font-bold text-[#2C2927] dark:text-white">
                             開発の心得
                         </h4>
@@ -269,7 +268,6 @@ export default function ProfileSection() {
                 {/* 最近ハマっているもの */}
                 <div className="space-y-4">
                     <div className="flex items-center gap-2">
-                        <span className="w-2 h-2 rounded-full bg-emerald-500" />
                         <h5 className="text-base font-bold text-[#2C2927] dark:text-white">
                             最近ハマっている・作っているもの
                         </h5>
@@ -302,7 +300,6 @@ export default function ProfileSection() {
                 <div className="space-y-4 pt-2">
                     <div className="flex items-center justify-between">
                         <div className="flex items-center gap-2">
-                            <span className="w-2 h-2 rounded-full bg-emerald-500" />
                             <h5 className="text-base font-bold text-[#2C2927] dark:text-white">
                                 代表フォトギャラリー
                             </h5>

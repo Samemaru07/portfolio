@@ -53,7 +53,7 @@ export default function LinksSection() {
                 {/* Category 2: SNS */}
                 <div className="space-y-3">
                     <div className="flex items-center gap-2">
-                        <span className="w-1.5 rounded-full bg-pink-400" />
+                        <span className="w-1.5 h-1.5 rounded-full bg-pink-400" />
                         <h4 className="text-sm font-bold text-[#2C2927] dark:text-white">
                             SNS
                         </h4>
@@ -92,7 +92,7 @@ export default function LinksSection() {
                 {/* Category 3: 技術記事 */}
                 <div className="space-y-3">
                     <div className="flex items-center gap-2">
-                        <span className="2-1.5 h-1.5 rounded-full bg-sky-400" />
+                        <span className="w-1.5 h-1.5 rounded-full bg-sky-400" />
                         <h4 className="text-sm font-bold text-[#2C2927] dark:text-white">
                             技術記事
                         </h4>

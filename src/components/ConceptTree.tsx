@@ -6,7 +6,6 @@ export default function ConceptTree() {
             {/* Left: Concept Description */}
             <div className="lg:col-span-5 space-y-6">
                 <div className="inline-flex items-center gap-2">
-                    <span className="w-2 h-2 rounded-full bg-orange-400" />
                     <h2 className="text-2xl md:text-3xl font-bold tracking-tight text-[#2C2927] dark:text-white">
                         Concept
                     </h2>
