@@ -196,9 +196,6 @@ export default function ConceptTree() {
                         {/* Terminal status line */}
                         <div className="mt-4 pt-3 border-t border-white/10 text-neutral-400 text-[11px] flex justify-between items-center">
                             <span>4 directories, 6 nodes</span>
-                            <span className="blink-cursor font-mono">
-                                READY
-                            </span>
                         </div>
                     </div>
                 </div>
