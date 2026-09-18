@@ -13,14 +13,14 @@ export default function ProfileSection() {
             id="profile"
             className="pt-12 border-t border-black/5 dark:border-white/5 space-y-12 scroll-mt-20"
         >
-            {/* 1. Profile Me & Timeline */}
+            {/* 1. Profile Me & Git Graph Timeline */}
             <div id="profile-me" className="scroll-mt-24 space-y-6">
                 <div className="space-y-1">
                     <h3 className="text-2xl font-bold text-[#2C2927] dark:text-white">
                         Profile & History
                     </h3>
                     <p className="text-xs sm:text-sm text-[#6B6560] dark:text-neutral-400 leading-relaxed pt-0.5">
-                        エンジニアを志す背景と、これまでの歩み・マイルストーンです。
+                        エンジニアを志す背景と、コミットログに見立てたこれまでの歩み・マイルストーンです。
                     </p>
                 </div>
 
@@ -34,109 +34,186 @@ export default function ProfileSection() {
                     ))}
                 </div>
 
-                {/* Timeline Component */}
-                <div className="p-6 sm:p-8 rounded-2xl bg-white/70 dark:bg-[#252422] border border-black/5 dark:border-white/5 shadow-sm space-y-6">
-                    <div className="flex items-center justify-between border-b border-black/5 dark:border-white/5 pb-3">
-                        <h4 className="text-sm font-bold text-[#2C2927] dark:text-white flex items-center gap-2">
-                            <span>📅</span> 経歴・マイルストーン
-                        </h4>
-                        <span className="text-xs font-mono text-neutral-400">
-                            History
-                        </span>
+                {/* Git Log Terminal Window */}
+                <div className="rounded-2xl bg-term-bg dark:bg-[#252422] text-[#F5F2EB] shadow-terminal dark:shadow-terminal-dark overflow-hidden border border-term-border">
+                    {/* Terminal Header */}
+                    <div className="px-4 py-2.5 bg-[#2E2C2A] dark:bg-[#1E1D1B] flex items-center justify-between border-b border-white/5">
+                        <div className="flex items-center gap-2">
+                            <div className="flex items-center gap-1.5">
+                                <span className="w-2.5 h-2.5 rounded-full bg-[#FF5F56] inline-block" />
+                                <span className="w-2.5 h-2.5 rounded-full bg-[#FFBD2E] inline-block" />
+                                <span className="w-2.5 h-2.5 rounded-full bg-[#27C93F] inline-block" />
+                            </div>
+                            <span className="text-xs font-mono text-neutral-400 ml-2 select-none">
+                                &gt;_ git log --graph --all
+                            </span>
+                        </div>
+                        <div className="flex items-center gap-4 text-[11px] font-mono text-neutral-400 hidden sm:flex">
+                            <span className="flex items-center gap-1.5">
+                                <span className="w-2 h-2 rounded-full bg-emerald-400" />{" "}
+                                main
+                            </span>
+                            <span className="flex items-center gap-1.5">
+                                <span className="w-2 h-2 rounded-full bg-sky-400" />{" "}
+                                college (active)
+                            </span>
+                        </div>
                     </div>
 
-                    <div className="space-y-7 border-l-2 border-emerald-500/30 dark:border-emerald-500/20 pl-4 sm:pl-6 ml-2 font-sans">
-                        {timelineItems.map((item) => {
-                            const isCurrent = item.isCurrent;
+                    {/* Terminal Body: Git Visual Graph */}
+                    <div className="p-5 sm:p-7 font-mono text-xs leading-relaxed space-y-4 overflow-x-auto">
+                        <div className="text-[#A39E98] pb-2 border-b border-white/5 flex items-center justify-between">
+                            <span>
+                                $ git log --graph --oneline --decorate --all
+                            </span>
+                            <span className="text-[10px] text-neutral-500">
+                                HEAD -&gt; college
+                            </span>
+                        </div>
 
-                            return (
-                                <div key={item.id} className="relative group">
-                                    {/* Node Dot */}
-                                    <div
-                                        className={`absolute -left-[23px] sm:-left-[31px] top-1.5 w-3.5 h-3.5 rounded-full border-4 border-white dark:border-[#252422] ${
-                                            isCurrent
-                                                ? "bg-emerald-500 ring-2 ring-emerald-500/20"
-                                                : "bg-neutral-300 dark:bg-neutral-600"
-                                        }`}
-                                    />
+                        <div className="space-y-0 pt-2">
+                            {timelineItems.map((item, index) => {
+                                const isFirst = index === 0;
+                                const hasSubItems =
+                                    item.subItems && item.subItems.length > 0;
 
-                                    <div className="space-y-1.5">
-                                        {/* Header line: Year & Badge */}
-                                        <div className="flex items-center gap-2 flex-wrap">
-                                            <span
-                                                className={`text-xs font-mono font-bold ${
-                                                    isCurrent
-                                                        ? "text-emerald-600 dark:text-emerald-400"
-                                                        : "text-neutral-500"
-                                                }`}
-                                            >
-                                                {item.year}
-                                            </span>
-                                            {item.badge && (
-                                                <span
-                                                    className={`text-[11px] px-2 py-0.5 rounded font-medium ${
-                                                        item.badge.variant ===
-                                                        "award"
-                                                            ? "bg-amber-100 dark:bg-amber-950/60 text-amber-700 dark:text-amber-300 font-semibold"
-                                                            : item.badge
-                                                                    .variant ===
-                                                                "current"
-                                                              ? "bg-emerald-100 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300"
-                                                              : "bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400"
+                                return (
+                                    <div key={item.id} className="space-y-0">
+                                        {/* メインコミット行 */}
+                                        <div className="flex items-stretch group">
+                                            {/* グラフライン描画カラム: 幅56px固定 (main軸: 18px, college軸: 42px) */}
+                                            <div className="relative w-14 shrink-0">
+                                                {/* main縦線: 上から下端まで一定の濃さ(opacity-75)で貫通 */}
+                                                <div
+                                                    className={`absolute left-[18px] w-[2.5px] -translate-x-1/2 bg-[#10b981] opacity-75 bottom-0 ${
+                                                        isFirst
+                                                            ? "top-[14px]"
+                                                            : "top-0"
                                                     }`}
-                                                >
-                                                    {item.badge.label}
-                                                </span>
-                                            )}
-                                        </div>
+                                                />
 
-                                        {/* Title & Description */}
-                                        <h5 className="text-sm font-bold text-[#2C2927] dark:text-white">
-                                            {item.title}
-                                        </h5>
-                                        <p className="text-xs text-[#6B6560] dark:text-neutral-400 leading-relaxed">
-                                            {item.description}
-                                        </p>
+                                                {/* 2023年（高専入学）：collegeブランチへの分岐曲線 */}
+                                                {hasSubItems && (
+                                                    <svg
+                                                        className="absolute inset-0 w-full h-full pointer-events-none overflow-visible"
+                                                        viewBox="0 0 56 48"
+                                                        preserveAspectRatio="none"
+                                                    >
+                                                        <path
+                                                            d="M 18 14 C 18 30, 42 24, 42 48"
+                                                            fill="none"
+                                                            stroke="#38bdf8"
+                                                            strokeWidth="2"
+                                                            strokeDasharray="3 3"
+                                                            strokeOpacity="0.85"
+                                                        />
+                                                    </svg>
+                                                )}
 
-                                        {/* Sub Items (e.g. Current achievements) */}
-                                        {item.subItems &&
-                                            item.subItems.length > 0 && (
-                                                <div className="ml-2 sm:ml-4 pl-3.5 border-l border-neutral-300 dark:border-neutral-700 space-y-3 pt-2 text-xs">
-                                                    {item.subItems.map(
-                                                        (sub, sIdx) => (
-                                                            <div
-                                                                key={sIdx}
-                                                                className="space-y-0.5 relative"
-                                                            >
-                                                                <div className="absolute -left-[18px] top-1.5 w-1.5 h-1.5 rounded-full bg-emerald-400" />
-                                                                <div className="font-medium text-[#2C2927] dark:text-neutral-200 flex items-center gap-1.5 flex-wrap">
-                                                                    <span>
-                                                                        {
-                                                                            sub.title
-                                                                        }
-                                                                    </span>
-                                                                    {sub.statusBadge && (
-                                                                        <span className="text-[10px] px-1.5 py-0.5 rounded bg-emerald-50 dark:bg-emerald-950/50 text-emerald-600 dark:text-emerald-400 font-mono">
-                                                                            {
-                                                                                sub.statusBadge
-                                                                            }
-                                                                        </span>
-                                                                    )}
-                                                                </div>
-                                                                <p className="text-[11px] text-[#7A746E] dark:text-neutral-400 leading-normal">
-                                                                    {
-                                                                        sub.description
-                                                                    }
-                                                                </p>
-                                                            </div>
-                                                        ),
+                                                {/* mainコミットノード */}
+                                                <span className="absolute left-[18px] top-[14px] -translate-x-1/2 -translate-y-1/2 rounded-full z-10 box-border w-2.5 h-2.5 bg-[#2E2C2A] border-2 border-emerald-500" />
+                                            </div>
+
+                                            {/* コミット情報コンテンツ */}
+                                            <div className="pb-5 pt-1 space-y-1 flex-1 min-w-0 pr-2">
+                                                <div className="flex items-center gap-2 flex-wrap font-mono text-[11px] leading-tight">
+                                                    {/* 年・期間：アンバー系で強調 */}
+                                                    <span className="text-amber-300 font-bold bg-amber-400/10 px-1.5 py-0.5 rounded border border-amber-400/20">
+                                                        [{item.year}]
+                                                    </span>
+                                                    {item.gitRef && (
+                                                        <span className="text-emerald-400 font-medium">
+                                                            ({item.gitRef})
+                                                        </span>
+                                                    )}
+                                                    {item.badge && (
+                                                        <span className="text-neutral-400 font-sans text-[11px]">
+                                                            · {item.badge.label}
+                                                        </span>
                                                     )}
                                                 </div>
-                                            )}
+
+                                                <h5 className="font-bold text-sm sm:text-base text-white font-sans tracking-wide pt-0.5">
+                                                    {item.title}
+                                                </h5>
+
+                                                <p className="text-xs text-neutral-300/85 leading-relaxed font-sans max-w-3xl">
+                                                    {item.description}
+                                                </p>
+                                            </div>
+                                        </div>
+
+                                        {/* 【collegeブランチ】学年ごとのコミット群 */}
+                                        {hasSubItems &&
+                                            item.subItems!.map((sub, sIdx) => {
+                                                const isCollegeHead =
+                                                    sIdx ===
+                                                    item.subItems!.length - 1;
+
+                                                return (
+                                                    <div
+                                                        key={sIdx}
+                                                        className="flex items-stretch group"
+                                                    >
+                                                        {/* グラフライン描画カラム */}
+                                                        <div className="relative w-14 shrink-0">
+                                                            {/* main幹縦線: 他の箇所と同一の濃さ (opacity-75) で下端まで貫通 */}
+                                                            <div className="absolute left-[18px] top-0 bottom-0 w-[2.5px] -translate-x-1/2 bg-[#10b981] opacity-75" />
+
+                                                            {/* collegeブランチ縦線: HEADノード以降も途切れず下端 (bottom-0) まで貫通 */}
+                                                            <div className="absolute left-[42px] -translate-x-1/2 top-0 bottom-0 w-[2px] bg-[#38bdf8] opacity-80" />
+
+                                                            {/* collegeコミットノード */}
+                                                            <span
+                                                                className={`absolute left-[42px] top-[14px] -translate-x-1/2 -translate-y-1/2 rounded-full z-10 box-border ${
+                                                                    isCollegeHead
+                                                                        ? "w-3.5 h-3.5 bg-sky-400 ring-4 ring-sky-500/20 shadow-[0_0_8px_rgba(56,189,248,0.8)]"
+                                                                        : "w-2.5 h-2.5 rounded-full bg-sky-400 ring-2 ring-[#252422]"
+                                                                }`}
+                                                            />
+                                                        </div>
+
+                                                        {/* サブコミット情報コンテンツ */}
+                                                        <div className="pb-5 pt-1 space-y-1 flex-1 min-w-0 pr-2">
+                                                            <div className="flex items-center gap-2 flex-wrap font-mono text-[11px] leading-tight">
+                                                                {/* 学年 / 現在地バッジ：目立たせる配色 */}
+                                                                {sub.statusBadge && (
+                                                                    <span
+                                                                        className={`px-1.5 py-0.5 rounded font-mono text-[10px] font-medium border ${
+                                                                            isCollegeHead
+                                                                                ? "bg-emerald-500/15 text-emerald-300 border-emerald-500/30 font-bold"
+                                                                                : "bg-amber-400/10 text-amber-200 border-amber-400/20"
+                                                                        }`}
+                                                                    >
+                                                                        [
+                                                                        {
+                                                                            sub.statusBadge
+                                                                        }
+                                                                        ]
+                                                                    </span>
+                                                                )}
+                                                                <span className="text-sky-300 font-medium">
+                                                                    (college)
+                                                                </span>
+                                                            </div>
+
+                                                            <h6 className="font-bold text-xs sm:text-sm text-neutral-200 font-sans tracking-wide pt-0.5">
+                                                                {sub.title}
+                                                            </h6>
+
+                                                            <p className="text-[11px] text-neutral-400 font-sans leading-relaxed max-w-3xl">
+                                                                {
+                                                                    sub.description
+                                                                }
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                );
+                                            })}
                                     </div>
-                                </div>
-                            );
-                        })}
+                                );
+                            })}
+                        </div>
                     </div>
                 </div>
             </div>
@@ -148,6 +225,7 @@ export default function ProfileSection() {
             >
                 <div className="space-y-1">
                     <div className="flex items-center gap-2">
+                        <span className="w-2 h-2 rounded-full bg-emerald-500" />
                         <h4 className="text-lg font-bold text-[#2C2927] dark:text-white">
                             開発の心得
                         </h4>
@@ -188,7 +266,6 @@ export default function ProfileSection() {
                             実務・個人開発・高専での学びを通して触れてきた技術群
                         </p>
                     </div>
-                    {/* 凡例 */}
                     <div className="flex items-center gap-3 text-[11px] font-mono flex-wrap">
                         <span className="inline-flex items-center gap-1 text-emerald-600 dark:text-emerald-400 font-semibold">
                             <span className="w-2 h-2 rounded-full bg-emerald-500" />
@@ -205,7 +282,6 @@ export default function ProfileSection() {
                     </div>
                 </div>
 
-                {/* 4カテゴリグリッド */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
                     {skillCategories.map((cat) => (
                         <div
@@ -265,9 +341,9 @@ export default function ProfileSection() {
                     </p>
                 </div>
 
-                {/* 最近ハマっているもの */}
                 <div className="space-y-4">
                     <div className="flex items-center gap-2">
+                        <span className="w-2 h-2 rounded-full bg-emerald-500" />
                         <h5 className="text-base font-bold text-[#2C2927] dark:text-white">
                             最近ハマっている・作っているもの
                         </h5>
@@ -296,10 +372,10 @@ export default function ProfileSection() {
                     </div>
                 </div>
 
-                {/* フォトギャラリー */}
                 <div className="space-y-4 pt-2">
                     <div className="flex items-center justify-between">
                         <div className="flex items-center gap-2">
+                            <span className="w-2 h-2 rounded-full bg-emerald-500" />
                             <h5 className="text-base font-bold text-[#2C2927] dark:text-white">
                                 代表フォトギャラリー
                             </h5>
