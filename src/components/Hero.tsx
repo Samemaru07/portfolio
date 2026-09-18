@@ -63,14 +63,14 @@ export default function Hero() {
                                 $ cowsay &quot;Forget the cow. Look right.&quot;
                             </div>
                             <pre className="text-[#F5F2EB] whitespace-pre font-mono">
-                                {` --------------------------------
+                                {`   ------------------------------------
 < Forget the cow. Look right. >
- --------------------------------
-        \\   ^__^
-         \\  (oo)\\_______
-            (__)\\       )\\/\`
-                ||----w |
-                ||     ||`}
+   ------------------------------------
+                        \\   ^__^
+                         \\  (oo)\\______
+                             (__)\\               ) \\ / \\
+                                      ||----w    |
+                                      ||             ||`}
                             </pre>
                         </div>
                     </div>
