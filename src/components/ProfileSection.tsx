@@ -35,38 +35,38 @@ export default function ProfileSection() {
                 </div>
 
                 {/* Git Log Terminal Window */}
-                <div className="rounded-2xl bg-term-bg dark:bg-[#252422] text-[#F5F2EB] shadow-terminal dark:shadow-terminal-dark overflow-hidden border border-term-border">
+                <div className="rounded-2xl bg-[#1E1D1B]/80 dark:bg-[#121110]/85 text-[#F5F2EB] shadow-[0_20px_50px_rgba(0,0,0,0.3),inset_0_1px_1px_rgba(255,255,255,0.25),inset_0_-1px_1px_rgba(0,0,0,0.2)] overflow-hidden border border-white/20">
                     {/* Terminal Header */}
-                    <div className="px-4 py-2.5 bg-[#2E2C2A] dark:bg-[#1E1D1B] flex items-center justify-between border-b border-white/5">
+                    <div className="px-4 py-2.5 bg-white/10 dark:bg-white/5 flex items-center justify-between border-b border-white/15">
                         <div className="flex items-center gap-2">
                             <div className="flex items-center gap-1.5">
-                                <span className="w-2.5 h-2.5 rounded-full bg-[#FF5F56] inline-block" />
-                                <span className="w-2.5 h-2.5 rounded-full bg-[#FFBD2E] inline-block" />
-                                <span className="w-2.5 h-2.5 rounded-full bg-[#27C93F] inline-block" />
+                                <span className="w-2.5 h-2.5 rounded-full bg-[#FF5F56] inline-block shadow-sm" />
+                                <span className="w-2.5 h-2.5 rounded-full bg-[#FFBD2E] inline-block shadow-sm" />
+                                <span className="w-2.5 h-2.5 rounded-full bg-[#27C93F] inline-block shadow-sm" />
                             </div>
-                            <span className="text-xs font-mono text-neutral-400 ml-2 select-none">
+                            <span className="text-xs font-mono text-white/80 ml-2 select-none font-medium drop-shadow-sm">
                                 &gt;_ git log --graph --all
                             </span>
                         </div>
-                        <div className="flex items-center gap-4 text-[11px] font-mono text-neutral-400 hidden sm:flex">
+                        <div className="flex items-center gap-4 text-[11px] font-mono text-white/70 hidden sm:flex">
                             <span className="flex items-center gap-1.5">
                                 <span className="w-2 h-2 rounded-full bg-emerald-400" />{" "}
                                 main
                             </span>
                             <span className="flex items-center gap-1.5">
                                 <span className="w-2 h-2 rounded-full bg-sky-400" />{" "}
-                                college (active)
+                                college (in progress)
                             </span>
                         </div>
                     </div>
 
                     {/* Terminal Body: Git Visual Graph */}
                     <div className="p-5 sm:p-7 font-mono text-xs leading-relaxed space-y-4 overflow-x-auto">
-                        <div className="text-[#A39E98] pb-2 border-b border-white/5 flex items-center justify-between">
-                            <span>
+                        <div className="text-[#A39E98] pb-2 border-b border-white/10 flex items-center justify-between">
+                            <span className="font-medium drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">
                                 $ git log --graph --oneline --decorate --all
                             </span>
-                            <span className="text-[10px] text-neutral-500">
+                            <span className="text-[10px] text-neutral-400">
                                 HEAD -&gt; college
                             </span>
                         </div>
@@ -118,26 +118,26 @@ export default function ProfileSection() {
                                             <div className="pb-5 pt-1 space-y-1 flex-1 min-w-0 pr-2">
                                                 <div className="flex items-center gap-2 flex-wrap font-mono text-[11px] leading-tight">
                                                     {/* 年・期間：アンバー系で強調 */}
-                                                    <span className="text-amber-300 font-bold bg-amber-400/10 px-1.5 py-0.5 rounded border border-amber-400/20">
+                                                    <span className="text-amber-300 font-bold bg-amber-400/10 px-1.5 py-0.5 rounded border border-amber-400/20 drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">
                                                         [{item.year}]
                                                     </span>
                                                     {item.gitRef && (
-                                                        <span className="text-emerald-400 font-medium">
+                                                        <span className="text-emerald-400 font-medium drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">
                                                             ({item.gitRef})
                                                         </span>
                                                     )}
                                                     {item.badge && (
-                                                        <span className="text-neutral-400 font-sans text-[11px]">
+                                                        <span className="text-neutral-300 font-sans text-[11px] drop-shadow-sm">
                                                             · {item.badge.label}
                                                         </span>
                                                     )}
                                                 </div>
 
-                                                <h5 className="font-bold text-sm sm:text-base text-white font-sans tracking-wide pt-0.5">
+                                                <h5 className="font-bold text-sm sm:text-base text-white font-sans tracking-wide pt-0.5 drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">
                                                     {item.title}
                                                 </h5>
 
-                                                <p className="text-xs text-neutral-300/85 leading-relaxed font-sans max-w-3xl">
+                                                <p className="text-xs text-neutral-200/90 leading-relaxed font-sans max-w-3xl drop-shadow-[0_1px_1px_rgba(0,0,0,0.8)]">
                                                     {item.description}
                                                 </p>
                                             </div>
@@ -192,16 +192,16 @@ export default function ProfileSection() {
                                                                         ]
                                                                     </span>
                                                                 )}
-                                                                <span className="text-sky-300 font-medium">
+                                                                <span className="text-sky-300 font-medium drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">
                                                                     (college)
                                                                 </span>
                                                             </div>
 
-                                                            <h6 className="font-bold text-xs sm:text-sm text-neutral-200 font-sans tracking-wide pt-0.5">
+                                                            <h6 className="font-bold text-xs sm:text-sm text-neutral-100 font-sans tracking-wide pt-0.5 drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">
                                                                 {sub.title}
                                                             </h6>
 
-                                                            <p className="text-[11px] text-neutral-400 font-sans leading-relaxed max-w-3xl">
+                                                            <p className="text-[11px] text-neutral-300 font-sans leading-relaxed max-w-3xl drop-shadow-[0_1px_1px_rgba(0,0,0,0.8)]">
                                                                 {
                                                                     sub.description
                                                                 }

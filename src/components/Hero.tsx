@@ -41,36 +41,36 @@ export default function Hero() {
 
                 {/* Hero Terminal: cowsay */}
                 <div className="max-w-md">
-                    <div className="rounded-2xl bg-term-bg/95 dark:bg-[#252422]/95 backdrop-blur-md text-[#F5F2EB] shadow-terminal dark:shadow-terminal-dark overflow-hidden border border-term-border/80 transform hover:-translate-y-0.5 transition duration-300">
+                    <div className="rounded-2xl bg-[#1E1D1B]/80 dark:bg-[#121110]/85 text-white shadow-[0_20px_50px_rgba(0,0,0,0.3),inset_0_1px_1px_rgba(255,255,255,0.25),inset_0_-1px_1px_rgba(0,0,0,0.2)] overflow-hidden border border-white/20 transform hover:-translate-y-0.5 transition duration-300">
                         {/* Terminal Header */}
-                        <div className="px-4 py-2 bg-[#2E2C2A] dark:bg-[#1E1D1B] flex items-center justify-between border-b border-white/5">
+                        <div className="px-4 py-2 bg-white/10 dark:bg-white/5 flex items-center justify-between border-b border-white/15">
                             <div className="flex items-center gap-1.5">
-                                <span className="w-2.5 h-2.5 rounded-full bg-[#FF5F56] inline-block" />
-                                <span className="w-2.5 h-2.5 rounded-full bg-[#FFBD2E] inline-block" />
-                                <span className="w-2.5 h-2.5 rounded-full bg-[#27C93F] inline-block" />
-                                <span className="text-xs font-mono text-neutral-400 ml-2 select-none">
+                                <span className="w-2.5 h-2.5 rounded-full bg-[#FF5F56] inline-block shadow-sm" />
+                                <span className="w-2.5 h-2.5 rounded-full bg-[#FFBD2E] inline-block shadow-sm" />
+                                <span className="w-2.5 h-2.5 rounded-full bg-[#27C93F] inline-block shadow-sm" />
+                                <span className="text-xs font-mono text-white/80 ml-2 select-none font-medium drop-shadow-sm">
                                     &gt;_ cowsay.sh
                                 </span>
                             </div>
-                            <span className="text-[10px] font-mono text-neutral-400">
+                            <span className="text-[10px] font-mono text-white/60 drop-shadow-sm">
                                 bash
                             </span>
                         </div>
 
                         {/* Terminal Body */}
                         <div className="p-4 font-mono text-xs leading-tight overflow-x-auto select-all">
-                            <div className="text-[#A39E98] mb-1">
+                            <div className="text-white/80 mb-1 font-semibold drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">
                                 $ cowsay &quot;Forget the cow. Look right.&quot;
                             </div>
-                            <pre className="text-[#F5F2EB] whitespace-pre font-mono">
-                                {`   ------------------------------------
+                            <pre className="text-white font-bold whitespace-pre font-mono drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]">
+                                {`    ------------------------------------
 < Forget the cow. Look right. >
-   ------------------------------------
+    ------------------------------------
                         \\   ^__^
                          \\  (oo)\\______
                              (__)\\               ) \\ / \\
-                                      ||----w    |
-                                      ||             ||`}
+                                     ||----w    |
+                                     ||             ||`}
                             </pre>
                         </div>
                     </div>
