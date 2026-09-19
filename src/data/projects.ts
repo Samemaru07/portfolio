@@ -130,6 +130,5 @@ export const projects: Project[] = [
         // TODO: 画像
         imageUrl: "/images/projects/coming-soon.jpg",
         imageCaption: "Hyper-webview-fork",
-        isWip: true,
     },
 ];
