@@ -24,7 +24,7 @@ function ProjectModal({ project, onClose }: ModalProps) {
     }, [onClose]);
 
     return (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/60 backdrop-blur-sm transition-opacity duration-200">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/60 transition-opacity duration-200">
             <div className="absolute inset-0" onClick={onClose} />
 
             <div className="relative w-full max-w-5xl bg-white dark:bg-[#1E1D1B] rounded-2xl sm:rounded-3xl shadow-2xl border border-black/10 dark:border-white/10 overflow-hidden flex flex-col max-h-[90vh] z-10 animate-in fade-in zoom-in-95 duration-200">
@@ -152,7 +152,6 @@ export default function WorksSection() {
             {/* Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {projects.map((project) => {
-                    const isWip = project.isWip;
                     const displayThumbnail =
                         project.thumbnailUrl || project.imageUrl;
 
@@ -160,64 +159,33 @@ export default function WorksSection() {
                         <div
                             key={project.id}
                             onClick={() => setSelectedProject(project)}
-                            className={`cursor-pointer p-6 rounded-2xl border transition flex flex-col justify-between group ${
-                                isWip
-                                    ? "bg-white/40 dark:bg-[#252422]/50 border-dashed border-black/15 dark:border-white/15 hover:border-black/30 dark:hover:border-white/30"
-                                    : "bg-white/70 dark:bg-[#252422] border-black/5 dark:border-white/5 shadow-sm hover:shadow-md hover:-translate-y-1"
-                            }`}
+                            className="cursor-pointer p-6 rounded-2xl border transition flex flex-col justify-between group bg-white/70 dark:bg-[#252422] border-black/5 dark:border-white/5 shadow-sm hover:shadow-md hover:-translate-y-1"
                         >
                             <div className="space-y-3">
                                 {/* Visual Header Box: サムネイル画像プレビュー */}
                                 <div className="relative h-36 rounded-xl overflow-hidden bg-warm-100 dark:bg-[#1E1D1B] border border-black/5 dark:border-white/5">
-                                    {isWip ? (
-                                        <div className="w-full h-full flex flex-col items-center justify-center text-xs font-mono gap-1 text-center p-3 text-neutral-400 bg-black/[0.02] dark:bg-white/[0.02]">
-                                            <span className="text-xl animate-pulse">
-                                                {project.icon}
-                                            </span>
-                                            <span className="text-[11px] font-bold text-[#2C2927] dark:text-neutral-200">
-                                                {project.categoryBadge}
-                                            </span>
-                                            <span className="text-[10px] text-neutral-400">
-                                                In Development
-                                            </span>
-                                        </div>
-                                    ) : (
-                                        <>
-                                            <img
-                                                src={displayThumbnail}
-                                                alt={project.cardTitle}
-                                                className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300"
-                                                onError={(e) => {
-                                                    (
-                                                        e.currentTarget as HTMLImageElement
-                                                    ).src =
-                                                        "https://placehold.co/600x400/252422/ffffff?text=" +
-                                                        encodeURIComponent(
-                                                            project.categoryBadge,
-                                                        );
-                                                }}
-                                            />
-                                            <div className="absolute top-2.5 left-2.5 px-2 py-0.5 rounded-md bg-black/60 backdrop-blur-md text-white text-[10px] font-mono font-medium shadow-sm">
-                                                {project.categoryBadge}
-                                            </div>
-                                        </>
-                                    )}
+                                    <img
+                                        src={displayThumbnail}
+                                        alt={project.cardTitle}
+                                        className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300"
+                                        onError={(e) => {
+                                            (
+                                                e.currentTarget as HTMLImageElement
+                                            ).src =
+                                                "https://placehold.co/600x400/252422/ffffff?text=" +
+                                                encodeURIComponent(
+                                                    project.categoryBadge,
+                                                );
+                                        }}
+                                    />
+                                    <div className="absolute top-2.5 left-2.5 px-2 py-0.5 rounded-md bg-black/60 text-white text-[10px] font-mono font-medium shadow-sm">
+                                        {project.categoryBadge}
+                                    </div>
                                 </div>
 
                                 {/* Title */}
-                                <h4
-                                    className={`font-bold text-base flex items-center gap-2 group-hover:text-amber-600 dark:group-hover:text-amber-400 transition ${
-                                        isWip
-                                            ? "text-neutral-600 dark:text-neutral-300"
-                                            : "text-[#2C2927] dark:text-white"
-                                    }`}
-                                >
+                                <h4 className="font-bold text-base flex items-center gap-2 group-hover:text-amber-600 dark:group-hover:text-amber-400 transition text-[#2C2927] dark:text-white">
                                     <span>{project.cardTitle}</span>
-                                    {isWip && (
-                                        <span className="text-[10px] px-2 py-0.5 rounded-full bg-orange-100 dark:bg-orange-950/60 text-orange-600 dark:text-orange-300 font-normal">
-                                            WIP
-                                        </span>
-                                    )}
                                 </h4>
 
                                 {/* Summary */}
@@ -227,13 +195,7 @@ export default function WorksSection() {
                             </div>
 
                             {/* Footer / Tags */}
-                            <div
-                                className={`flex items-center justify-between pt-3 mt-4 border-t ${
-                                    isWip
-                                        ? "border-dashed border-black/10 dark:border-white/10"
-                                        : "border-black/5 dark:border-white/5"
-                                }`}
-                            >
+                            <div className="flex items-center justify-between pt-3 mt-4 border-t border-black/5 dark:border-white/5">
                                 <div className="flex flex-wrap gap-1.5 text-[11px] font-mono text-neutral-500">
                                     {project.tags.map((tag) => (
                                         <span

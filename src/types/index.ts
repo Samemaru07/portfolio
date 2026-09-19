@@ -13,7 +13,6 @@ export interface Project {
     imageUrl: string;
     imageCaption: string;
     thumbnailUrl?: string;
-    isWip?: boolean;
 }
 
 // 経歴（Timeline）のサブ項目

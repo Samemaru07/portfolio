@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Hero() {
     return (
-        <section className="relative rounded-3xl overflow-hidden p-6 sm:p-10 lg:p-12 border border-black/5 dark:border-white/5 bg-gradient-to-br from-white/60 via-warm-50/40 to-warm-100/50 dark:from-[#201F1D]/80 dark:via-[#1A1918]/70 dark:to-[#161514]/90 shadow-sm transition-all">
+        <section className="relative rounded-3xl overflow-hidden bg-gradient-to-br from-white via-warm-50 to-warm-100 dark:from-[#201F1D] dark:via-[#1A1918] dark:to-[#161514] p-6 sm:p-10 lg:p-12 border border-black/5 dark:border-white/5 shadow-sm transition-all">
             {/* Background: Technical Blueprint Grid Overlay */}
             <div className="absolute inset-0 bg-[linear-gradient(to_right,#00000008_1px,transparent_1px),linear-gradient(to_bottom,#00000008_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none" />
 
@@ -41,36 +41,36 @@ export default function Hero() {
 
                 {/* Hero Terminal: cowsay */}
                 <div className="max-w-md">
-                    <div className="rounded-2xl bg-term-bg/95 dark:bg-[#252422]/95 backdrop-blur-md text-[#F5F2EB] shadow-terminal dark:shadow-terminal-dark overflow-hidden border border-term-border/80 transform hover:-translate-y-0.5 transition duration-300">
+                    <div className="rounded-2xl bg-[#1E1D1B]/80 dark:bg-[#121110]/85 text-white shadow-[0_20px_50px_rgba(0,0,0,0.3),inset_0_1px_1px_rgba(255,255,255,0.25),inset_0_-1px_1px_rgba(0,0,0,0.2)] overflow-hidden border border-white/20 transform hover:-translate-y-0.5 transition duration-300">
                         {/* Terminal Header */}
-                        <div className="px-4 py-2 bg-[#2E2C2A] dark:bg-[#1E1D1B] flex items-center justify-between border-b border-white/5">
+                        <div className="px-4 py-2 bg-white/10 dark:bg-white/5 flex items-center justify-between border-b border-white/15">
                             <div className="flex items-center gap-1.5">
-                                <span className="w-2.5 h-2.5 rounded-full bg-[#FF5F56] inline-block" />
-                                <span className="w-2.5 h-2.5 rounded-full bg-[#FFBD2E] inline-block" />
-                                <span className="w-2.5 h-2.5 rounded-full bg-[#27C93F] inline-block" />
-                                <span className="text-xs font-mono text-neutral-400 ml-2 select-none">
+                                <span className="w-2.5 h-2.5 rounded-full bg-[#FF5F56] inline-block shadow-sm" />
+                                <span className="w-2.5 h-2.5 rounded-full bg-[#FFBD2E] inline-block shadow-sm" />
+                                <span className="w-2.5 h-2.5 rounded-full bg-[#27C93F] inline-block shadow-sm" />
+                                <span className="text-xs font-mono text-white/80 ml-2 select-none font-medium drop-shadow-sm">
                                     &gt;_ cowsay.sh
                                 </span>
                             </div>
-                            <span className="text-[10px] font-mono text-neutral-400">
+                            <span className="text-[10px] font-mono text-white/60 drop-shadow-sm">
                                 bash
                             </span>
                         </div>
 
                         {/* Terminal Body */}
                         <div className="p-4 font-mono text-xs leading-tight overflow-x-auto select-all">
-                            <div className="text-[#A39E98] mb-1">
+                            <div className="text-white/80 mb-1 font-semibold drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">
                                 $ cowsay &quot;Forget the cow. Look right.&quot;
                             </div>
-                            <pre className="text-[#F5F2EB] whitespace-pre font-mono">
-                                {`   ------------------------------------
+                            <pre className="text-white font-bold whitespace-pre font-mono drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]">
+                                {`    ------------------------------------
 < Forget the cow. Look right. >
-   ------------------------------------
+    ------------------------------------
                         \\   ^__^
                          \\  (oo)\\______
                              (__)\\               ) \\ / \\
-                                      ||----w    |
-                                      ||             ||`}
+                                     ||----w    |
+                                     ||             ||`}
                             </pre>
                         </div>
                     </div>
