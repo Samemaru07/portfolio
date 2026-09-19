@@ -6,7 +6,6 @@ export default function ConceptTree() {
             {/* Left: Concept Description */}
             <div className="lg:col-span-5 space-y-6">
                 <div className="inline-flex items-center gap-2">
-                    <span className="w-2 h-2 rounded-full bg-orange-400" />
                     <h2 className="text-2xl md:text-3xl font-bold tracking-tight text-[#2C2927] dark:text-white">
                         Concept
                     </h2>
@@ -41,7 +40,7 @@ export default function ConceptTree() {
             </div>
 
             {/* Right: Terminal 2: Tree Navigation */}
-            <div className="lg:col-span-7">
+            <div className="lg:col-span-7 transform hover:-translate-y-0.5 transition duration-300">
                 <div className="rounded-2xl bg-term-bg dark:bg-[#252422] text-[#F5F2EB] shadow-terminal dark:shadow-terminal-dark overflow-hidden border border-term-border">
                     {/* Terminal Header */}
                     <div className="px-4 py-2.5 bg-[#2E2C2A] dark:bg-[#1E1D1B] flex items-center justify-between border-b border-white/5">
@@ -100,7 +99,7 @@ export default function ConceptTree() {
                             {/* profile child: me */}
                             <div className="flex items-center">
                                 <span className="text-neutral-500 select-none">
-                                    │&nbsp;&nbsp;&nbsp;├──&nbsp;
+                                    │&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;
                                 </span>
                                 <a
                                     href="#profile-me"
@@ -116,7 +115,7 @@ export default function ConceptTree() {
                             {/* profile child: philosophy */}
                             <div className="flex items-center">
                                 <span className="text-neutral-500 select-none">
-                                    │&nbsp;&nbsp;&nbsp;├──&nbsp;
+                                    │&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;
                                 </span>
                                 <a
                                     href="#profile-philosophy"
@@ -132,7 +131,7 @@ export default function ConceptTree() {
                             {/* profile child: skills */}
                             <div className="flex items-center">
                                 <span className="text-neutral-500 select-none">
-                                    │&nbsp;&nbsp;&nbsp;├──&nbsp;
+                                    │&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;
                                 </span>
                                 <a
                                     href="#skills"
@@ -148,7 +147,7 @@ export default function ConceptTree() {
                             {/* profile child: hobbies */}
                             <div className="flex items-center">
                                 <span className="text-neutral-500 select-none">
-                                    │&nbsp;&nbsp;&nbsp;└──&nbsp;
+                                    │&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;
                                 </span>
                                 <a
                                     href="#hobbies"
@@ -197,9 +196,6 @@ export default function ConceptTree() {
                         {/* Terminal status line */}
                         <div className="mt-4 pt-3 border-t border-white/10 text-neutral-400 text-[11px] flex justify-between items-center">
                             <span>4 directories, 6 nodes</span>
-                            <span className="blink-cursor font-mono">
-                                READY
-                            </span>
                         </div>
                     </div>
                 </div>

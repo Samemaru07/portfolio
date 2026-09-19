@@ -23,14 +23,14 @@ export const hobbiesData = {
         {
             category: "プラモデル製作",
             caption:
-                "アニメを流しながら細かいパーツを削り・塗装し・組み上げていく時間が至福です。",
+                "アニメを見ながら細かいパーツを削り・塗装し・組み上げていく時間が至福です。(画像は「HG 1/144 バルバトスルプスレクス」)",
             photos: [
                 {
-                    url: "/images/hobbies/wunder-kit.jpg",
-                    label: "AAA ヴンダー製作風景",
+                    url: "/images/hobbies/gunpla-kit.png",
+                    label: "プラモデル製作風景",
                 },
                 {
-                    url: "/images/hobbies/desk-tools.jpg",
+                    url: "/images/hobbies/gunpla-comp.png",
                     label: "塗装・組み立て作業",
                 },
             ],
@@ -38,14 +38,14 @@ export const hobbiesData = {
         {
             category: "イベント & 聖地巡礼",
             caption:
-                "作中で描かれた場所を実際に歩いて同じ景色をファインダーに収めたり、現地イベントへ足を運んだりしています。",
+                "作中で描かれた場所を実際に歩いて同じ景色を堪能したり、現地イベントへ足を運んだりしています。(画像は「氷菓」 (岐阜県・高山市) / 「薬屋のひとりごと 展」)",
             photos: [
                 {
-                    url: "/images/hobbies/pilgrimage-scenery.jpg",
+                    url: "/images/hobbies/pilgrimage-scenery.png",
                     label: "ロケ地・聖地探訪",
                 },
                 {
-                    url: "/images/hobbies/event-trip.jpg",
+                    url: "/images/hobbies/event-trip.png",
                     label: "イベント参加・遠征記録",
                 },
             ],

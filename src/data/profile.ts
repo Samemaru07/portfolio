@@ -13,19 +13,22 @@ export const timelineItems: TimelineItem[] = [
     {
         id: "birth",
         year: "2007",
+        gitRef: "tag: root",
         title: "爆誕 🐣",
-        description: "誕生。",
+        description: "富山県で誕生。石川県で暮らし始める。",
     },
     {
         id: "elementary",
         year: "Elementary School",
+        gitRef: "squash-merge -> main",
         title: "PCとの出会い",
         description:
             "小学生の頃からパソコンに深い興味を持ち、コンピュータの世界やものづくりに夢中になる。",
     },
     {
-        id: "wro2021",
-        year: "2021",
+        id: "junior-high",
+        year: "Junior High School (2021)",
+        gitRef: "squash-merge -> main",
         badge: {
             label: "Award",
             variant: "award",
@@ -37,36 +40,44 @@ export const timelineItems: TimelineItem[] = [
     {
         id: "kosen-entry",
         year: "2023",
+        gitRef: "branch: college",
         badge: {
             label: "高専 入学",
             variant: "school",
         },
         title: "高等専門学校 電子情報工学科 入学",
         description:
-            "学校での学びに全力で注力。ソフトウェアからハードウェア、ネットワークまで、幅広い情報技術の分野に積極的に足を踏み入れ知見を広げる。",
-    },
-    {
-        id: "kosen-4th",
-        year: "2026 (現在)",
-        badge: {
-            label: "高専 4年生",
-            variant: "current",
-        },
-        title: "専門領域の実践と制作活動",
-        description:
-            "インフラ・運用の自動化を見据えた技術習得を進めつつ、日常の開発環境や学内課題の改善に取り組む。",
-        isCurrent: true,
+            "高専へ進学し、情報工学の基礎からハードウェア・ネットワークまで幅広く学び始める。学業と専門性の探求に専念すべく、ここから『college』ブランチへ。",
         subItems: [
             {
-                title: "TeX版 実験レポート表紙の作成・学校公式採用",
+                title: "初の本格プログラミング",
                 description:
-                    "学生向けTeXスタイルファイルの作成とCI自動化を導入。",
+                    "高専1年次。構文やロジックの基礎を徹底的に叩き込み、コードを書いて思い通りの動作を実現するプログラミングの面白さに目覚める。",
+                statusBadge: "1st year",
             },
             {
-                title: "ターミナルエミュレータ「Hyper」のカスタマイズ・改良",
+                title: "Pythonで画像セグメンテーションAIの開発",
                 description:
-                    "日常の開発体験を高めるため、より使い勝手の良いエミュレータを目指して機能拡張中。",
-                statusBadge: "In Progress",
+                    "高専2年次。PyTorch・Pythonを用いた深層学習に挑戦し、画像の領域分割（セグメンテーション）モデルの実装と精度検証に取り組む。",
+                statusBadge: "2nd year",
+            },
+            {
+                title: "聖地巡礼ブログサイトの公開（Web・DB設計）",
+                description:
+                    "高専3年次。Next.js (App Router) と Laravel REST API を設計し、AWS S3への画像保存やVPS環境へのデプロイまで、フルスタックWeb開発を一貫してやり遂げる。",
+                statusBadge: "3rd year",
+            },
+            {
+                title: "TeX版 実験レポート表紙の実装・学校公式採用",
+                description:
+                    "高専4年次。学校指定のWord/PDF表紙しかなかった課題に対し、主要3エンジン対応のTeXスタイルファイルを独自実装。GitHub ActionsによるCI検証を組み込み、学校公式テンプレートとして正式採用される。",
+                statusBadge: "4th year",
+            },
+            {
+                title: "インフラ設計・セキュリティ・運用自動化の探求",
+                description:
+                    "高専4年次（現在地）。Arch Linuxや自作PCの環境構築から発展し、Terraform/Ansibleを用いたIaCやCI/CDパイプラインの構築など、「再現性が高く、運用のしやすい堅牢なシステム設計」を軸とした専門領域の探求に注力中。",
+                statusBadge: "HEAD -> college",
             },
         ],
     },

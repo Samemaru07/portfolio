@@ -33,6 +33,7 @@ export interface TimelineItem {
     };
     title: string;
     description: string;
+    gitRef: string;
     isCurrent?: boolean;
     subItems?: TimelineSubItem[];
 }
