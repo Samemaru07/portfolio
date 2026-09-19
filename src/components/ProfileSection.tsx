@@ -218,7 +218,7 @@ export default function ProfileSection() {
                 </div>
             </div>
 
-            {/* 2. Philosophy (開発の心得) */}
+            {/* 2. Philosophy (開発の心得: GitHub Actions Pipeline 風) */}
             <div
                 id="profile-philosophy"
                 className="scroll-mt-24 space-y-4 pt-4 border-t border-black/5 dark:border-white/5"
@@ -234,20 +234,105 @@ export default function ProfileSection() {
                     </p>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-1 text-xs font-sans">
-                    {philosophies.map((phil) => (
-                        <div
-                            key={phil.number}
-                            className="p-5 rounded-2xl bg-white/70 dark:bg-[#252422] border border-black/5 dark:border-white/5 shadow-sm space-y-1.5 hover:shadow-md transition"
-                        >
-                            <span className="font-mono font-bold text-emerald-600 dark:text-emerald-400 block text-xs">
-                                {phil.number}. {phil.title}
+                {/* GitHub Actions ワークフローパネル */}
+                <div className="rounded-2xl bg-[#1E1D1B]/80 dark:bg-[#121110]/85 border border-white/20 shadow-[0_20px_50px_rgba(0,0,0,0.3),inset_0_1px_1px_rgba(255,255,255,0.25),inset_0_-1px_1px_rgba(0,0,0,0.2)] overflow-hidden text-[#F5F2EB]">
+                    {/* Panel Header: ワークフロー実行メタ情報 */}
+                    <div className="px-4 py-3 bg-white/10 dark:bg-white/5 border-b border-white/15 flex flex-wrap items-center justify-between gap-2 font-mono text-xs">
+                        <div className="flex items-center gap-2.5">
+                            {/* 静的なステータスドット */}
+                            <span className="w-2 h-2 rounded-full bg-emerald-500/80 shrink-0" />
+                            <span className="text-neutral-300 font-medium">
+                                workflow:{" "}
+                                <span className="text-white">
+                                    verify-principles.yml
+                                </span>
                             </span>
-                            <p className="text-neutral-600 dark:text-neutral-400 leading-relaxed">
-                                {phil.description}
-                            </p>
+                            <span className="text-neutral-500 hidden sm:inline">
+                                #42
+                            </span>
                         </div>
-                    ))}
+
+                        <div className="flex items-center gap-3 text-[11px] text-neutral-400">
+                            <span className="px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 flex items-center gap-1.5 font-medium">
+                                <svg
+                                    className="w-3 h-3"
+                                    fill="currentColor"
+                                    viewBox="0 0 20 20"
+                                >
+                                    <path
+                                        fillRule="evenodd"
+                                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                        clipRule="evenodd"
+                                    />
+                                </svg>
+                                passing
+                            </span>
+                            <span className="hidden sm:inline text-neutral-500">
+                                in 350ms
+                            </span>
+                        </div>
+                    </div>
+
+                    {/* Panel Body: パイプラインジョブ群 */}
+                    <div className="p-5 sm:p-6 grid grid-cols-1 md:grid-cols-3 gap-4">
+                        {philosophies.map((phil, idx) => {
+                            const durations = ["120ms", "90ms", "140ms"];
+                            const jobNames = [
+                                "quality-assurance",
+                                "clean-architecture",
+                                "maintainability",
+                            ];
+
+                            return (
+                                <div
+                                    key={phil.number}
+                                    className="rounded-xl bg-white/[0.03] dark:bg-black/20 border border-white/10 hover:border-white/20 p-4 transition duration-200 flex flex-col justify-between space-y-3"
+                                >
+                                    {/* Job Header */}
+                                    <div className="space-y-2">
+                                        <div className="flex items-center justify-between font-mono text-[11px] text-neutral-400">
+                                            <span className="truncate">
+                                                job: {jobNames[idx]}
+                                            </span>
+                                            {/* 時間表示は緑ではなく控えめなニュートラル */}
+                                            <span className="text-neutral-500 shrink-0">
+                                                {durations[idx]}
+                                            </span>
+                                        </div>
+
+                                        <div className="flex items-center gap-2 pt-0.5">
+                                            {/* 控えめなチェックマーク */}
+                                            <span className="text-emerald-400 flex items-center justify-center shrink-0">
+                                                <svg
+                                                    className="w-4 h-4"
+                                                    fill="none"
+                                                    stroke="currentColor"
+                                                    strokeWidth="2.5"
+                                                    viewBox="0 0 24 24"
+                                                >
+                                                    <path
+                                                        strokeLinecap="round"
+                                                        strokeLinejoin="round"
+                                                        d="M5 13l4 4L19 7"
+                                                    />
+                                                </svg>
+                                            </span>
+                                            <h5 className="font-bold text-sm text-neutral-100 font-sans tracking-wide">
+                                                {phil.number}. {phil.title}
+                                            </h5>
+                                        </div>
+                                    </div>
+
+                                    {/* Job Output / Description */}
+                                    <div className="pt-2.5 border-t border-white/5">
+                                        <p className="text-xs text-neutral-400 leading-relaxed font-sans">
+                                            {phil.description}
+                                        </p>
+                                    </div>
+                                </div>
+                            );
+                        })}
+                    </div>
                 </div>
             </div>
 
