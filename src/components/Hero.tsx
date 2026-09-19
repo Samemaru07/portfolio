@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Hero() {
     return (
-        <section className="relative rounded-3xl overflow-hidden p-6 sm:p-10 lg:p-12 border border-black/5 dark:border-white/5 bg-gradient-to-br from-white/60 via-warm-50/40 to-warm-100/50 dark:from-[#201F1D]/80 dark:via-[#1A1918]/70 dark:to-[#161514]/90 shadow-sm transition-all">
+        <section className="relative rounded-3xl overflow-hidden bg-gradient-to-br from-white via-warm-50 to-warm-100 dark:from-[#201F1D] dark:via-[#1A1918] dark:to-[#161514] p-6 sm:p-10 lg:p-12 border border-black/5 dark:border-white/5 shadow-sm transition-all">
             {/* Background: Technical Blueprint Grid Overlay */}
             <div className="absolute inset-0 bg-[linear-gradient(to_right,#00000008_1px,transparent_1px),linear-gradient(to_bottom,#00000008_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none" />
 

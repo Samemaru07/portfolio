@@ -4,16 +4,22 @@ import WorksSection from "@/components/WorksSection";
 import ProfileSection from "@/components/ProfileSection";
 import EnvironmentSection from "@/components/EnvironmentSection";
 import LinksSection from "@/components/LinksSection";
+import BackgroundLayer from "@/components/BackgroundLayer";
 
 export default function Home() {
     return (
-        <div className="space-y-16">
-            <Hero />
-            <ConceptTree />
-            <WorksSection />
-            <ProfileSection />
-            <EnvironmentSection />
-            <LinksSection />
+        <div>
+            <BackgroundLayer />
+            <div className="space-y-16 relative z-0">
+                <section id="hero">
+                    <Hero />
+                </section>
+                <ConceptTree />
+                <WorksSection />
+                <ProfileSection />
+                <EnvironmentSection />
+                <LinksSection />
+            </div>
         </div>
     );
 }
