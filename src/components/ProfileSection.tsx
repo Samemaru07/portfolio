@@ -225,7 +225,6 @@ export default function ProfileSection() {
             >
                 <div className="space-y-1">
                     <div className="flex items-center gap-2">
-                        <span className="w-2 h-2 rounded-full bg-emerald-500" />
                         <h4 className="text-lg font-bold text-[#2C2927] dark:text-white">
                             開発の心得
                         </h4>
