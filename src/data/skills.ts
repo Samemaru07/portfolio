@@ -10,22 +10,22 @@ export const skillCategories: SkillCategory[] = [
         themeColor: "emerald",
         skills: [
             {
-                name: "Arch Linux ★",
+                name: "Arch Linux",
                 level: "daily",
                 tooltip: "日常の開発・メインOS",
             },
             {
-                name: "Ubuntu ★",
+                name: "Ubuntu",
                 level: "daily",
-                tooltip: "サーバー・検証環境など",
+                tooltip: "サブOS・WSLで使用",
             },
             {
-                name: "Windows ★",
+                name: "Windows",
                 level: "daily",
-                tooltip: "日常利用・学内環境など",
+                tooltip: "サブOS / 学内指定ソフトウェア",
             },
             {
-                name: "Bash ★",
+                name: "Bash",
                 level: "daily",
                 tooltip: "シェルスクリプトによる操作・自動化",
             },
@@ -45,7 +45,7 @@ export const skillCategories: SkillCategory[] = [
         themeColor: "sky",
         skills: [
             {
-                name: "Git ★",
+                name: "Git",
                 level: "daily",
                 tooltip: "バージョン管理・コミット運用",
             },
@@ -108,6 +108,7 @@ export const skillCategories: SkillCategory[] = [
             },
             { name: "C", level: "experienced" },
             { name: "C++", level: "experienced" },
+            { name: "Go", level: "experienced" },
         ],
     },
     {
