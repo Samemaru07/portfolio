@@ -8,6 +8,17 @@ import { skillCategories } from "@/data/skills";
 import { hobbiesData } from "@/data/hobbies";
 
 export default function ProfileSection() {
+    // 中核スタック（daily）を自動抽出
+    const coreSkills = skillCategories.flatMap((cat) =>
+        cat.skills
+            .filter((s) => s.level === "daily")
+            .map((s) => ({
+                ...s,
+                categoryTitle: cat.title,
+                categoryIcon: cat.icon,
+            })),
+    );
+
     return (
         <section
             id="profile"
@@ -218,7 +229,7 @@ export default function ProfileSection() {
                 </div>
             </div>
 
-            {/* 2. Philosophy (開発の心得) */}
+            {/* 2. Philosophy (開発の心得: GitHub Actions Pipeline 風) */}
             <div
                 id="profile-philosophy"
                 className="scroll-mt-24 space-y-4 pt-4 border-t border-black/5 dark:border-white/5"
@@ -234,90 +245,206 @@ export default function ProfileSection() {
                     </p>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-1 text-xs font-sans">
-                    {philosophies.map((phil) => (
-                        <div
-                            key={phil.number}
-                            className="p-5 rounded-2xl bg-white/70 dark:bg-[#252422] border border-black/5 dark:border-white/5 shadow-sm space-y-1.5 hover:shadow-md transition"
-                        >
-                            <span className="font-mono font-bold text-emerald-600 dark:text-emerald-400 block text-xs">
-                                {phil.number}. {phil.title}
+                {/* GitHub Actions ワークフローパネル */}
+                <div className="rounded-2xl bg-[#1E1D1B]/80 dark:bg-[#121110]/85 border border-white/20 shadow-[0_20px_50px_rgba(0,0,0,0.3),inset_0_1px_1px_rgba(255,255,255,0.25),inset_0_-1px_1px_rgba(0,0,0,0.2)] overflow-hidden text-[#F5F2EB]">
+                    {/* Panel Header: ワークフロー実行メタ情報 */}
+                    <div className="px-4 py-3 bg-white/10 dark:bg-white/5 border-b border-white/15 flex flex-wrap items-center justify-between gap-2 font-mono text-xs">
+                        <div className="flex items-center gap-2.5">
+                            {/* 静的なステータスドット */}
+                            <span className="w-2 h-2 rounded-full bg-emerald-500/80 shrink-0" />
+                            <span className="text-neutral-300 font-medium">
+                                workflow:{" "}
+                                <span className="text-white">
+                                    verify-principles.yml
+                                </span>
                             </span>
-                            <p className="text-neutral-600 dark:text-neutral-400 leading-relaxed">
-                                {phil.description}
-                            </p>
+                            <span className="text-neutral-500 hidden sm:inline">
+                                #42
+                            </span>
                         </div>
-                    ))}
+
+                        <div className="flex items-center gap-3 text-[11px] text-neutral-400">
+                            <span className="px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 flex items-center gap-1.5 font-medium">
+                                <svg
+                                    className="w-3 h-3"
+                                    fill="currentColor"
+                                    viewBox="0 0 20 20"
+                                >
+                                    <path
+                                        fillRule="evenodd"
+                                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                        clipRule="evenodd"
+                                    />
+                                </svg>
+                                passing
+                            </span>
+                            <span className="hidden sm:inline text-neutral-500">
+                                in 350ms
+                            </span>
+                        </div>
+                    </div>
+
+                    {/* Panel Body: パイプラインジョブ群 */}
+                    <div className="p-5 sm:p-6 grid grid-cols-1 md:grid-cols-3 gap-4">
+                        {philosophies.map((phil, idx) => {
+                            const durations = ["120ms", "90ms", "140ms"];
+                            const jobNames = [
+                                "quality-assurance",
+                                "clean-architecture",
+                                "maintainability",
+                            ];
+
+                            return (
+                                <div
+                                    key={phil.number}
+                                    className="rounded-xl bg-white/[0.03] dark:bg-black/20 border border-white/10 hover:border-white/20 p-4 transition duration-200 flex flex-col justify-between space-y-3"
+                                >
+                                    {/* Job Header */}
+                                    <div className="space-y-2">
+                                        <div className="flex items-center justify-between font-mono text-[11px] text-neutral-400">
+                                            <span className="truncate">
+                                                job: {jobNames[idx]}
+                                            </span>
+                                            {/* 時間表示は緑ではなく控えめなニュートラル */}
+                                            <span className="text-neutral-500 shrink-0">
+                                                {durations[idx]}
+                                            </span>
+                                        </div>
+
+                                        <div className="flex items-center gap-2 pt-0.5">
+                                            {/* 控えめなチェックマーク */}
+                                            <span className="text-emerald-400 flex items-center justify-center shrink-0">
+                                                <svg
+                                                    className="w-4 h-4"
+                                                    fill="none"
+                                                    stroke="currentColor"
+                                                    strokeWidth="2.5"
+                                                    viewBox="0 0 24 24"
+                                                >
+                                                    <path
+                                                        strokeLinecap="round"
+                                                        strokeLinejoin="round"
+                                                        d="M5 13l4 4L19 7"
+                                                    />
+                                                </svg>
+                                            </span>
+                                            <h5 className="font-bold text-sm text-neutral-100 font-sans tracking-wide">
+                                                {phil.number}. {phil.title}
+                                            </h5>
+                                        </div>
+                                    </div>
+
+                                    {/* Job Output / Description */}
+                                    <div className="pt-2.5 border-t border-white/5">
+                                        <p className="text-xs text-neutral-400 leading-relaxed font-sans">
+                                            {phil.description}
+                                        </p>
+                                    </div>
+                                </div>
+                            );
+                        })}
+                    </div>
                 </div>
             </div>
 
-            {/* 3. Skills */}
+            {/* 3. Skills (スペックシート / テクニカル仕様書風) */}
             <div
                 id="skills"
-                className="scroll-mt-24 space-y-4 pt-4 border-t border-black/5 dark:border-white/5"
+                className="scroll-mt-24 space-y-5 pt-4 border-t border-black/5 dark:border-white/5"
             >
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-                    <div>
+                {/* 見出し & 習熟度ガイド */}
+                <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3">
+                    <div className="space-y-1">
                         <h4 className="text-lg font-bold text-[#2C2927] dark:text-white">
-                            スキルスタック & ツール
+                            スキルスタック &amp; ツール
                         </h4>
-                        <p className="text-xs text-[#7A746E] dark:text-neutral-400">
-                            実務・個人開発・高専での学びを通して触れてきた技術群
+                        <p className="text-xs sm:text-sm text-[#6B6560] dark:text-neutral-400 leading-relaxed pt-0.5">
+                            高専での学びや個人開発で培ってきた技術群
                         </p>
                     </div>
-                    <div className="flex items-center gap-3 text-[11px] font-mono flex-wrap">
-                        <span className="inline-flex items-center gap-1 text-emerald-600 dark:text-emerald-400 font-semibold">
-                            <span className="w-2 h-2 rounded-full bg-emerald-500" />
-                            日常利用・中核
+
+                    {/* 控えめな凡例 */}
+                    <div className="flex items-center gap-3 text-[11px] font-mono text-neutral-500 shrink-0">
+                        <span className="flex items-center gap-1.5">
+                            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                            <span>中核・日常利用</span>
                         </span>
-                        <span className="inline-flex items-center gap-1 text-sky-600 dark:text-sky-400 font-semibold">
-                            <span className="w-2 h-2 rounded-full bg-sky-500" />
-                            制作・プロジェクト実績
+                        <span className="flex items-center gap-1.5">
+                            <span className="w-1.5 h-1.5 rounded-full bg-sky-500" />
+                            <span>制作・プロジェクト実績</span>
                         </span>
-                        <span className="inline-flex items-center gap-1 text-neutral-500 dark:text-neutral-400">
-                            <span className="w-2 h-2 rounded-full bg-neutral-400" />
-                            使用経験あり
+                        <span className="flex items-center gap-1.5">
+                            <span className="w-1.5 h-1.5 rounded-full bg-neutral-400" />
+                            <span>使用経験</span>
                         </span>
                     </div>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
+                {/* スペックシート本体 */}
+                <div className="rounded-2xl bg-white/40 dark:bg-[#1E1D1B]/40 border border-black/5 dark:border-white/10 overflow-hidden divide-y divide-black/5 dark:divide-white/5 shadow-sm">
                     {skillCategories.map((cat) => (
                         <div
                             key={cat.id}
-                            className="p-5 rounded-2xl bg-white/70 dark:bg-[#252422] border border-black/5 dark:border-white/5 shadow-sm space-y-3"
+                            className="grid grid-cols-1 md:grid-cols-12 p-4 sm:p-5 gap-3 md:gap-6 hover:bg-black/[0.015] dark:hover:bg-white/[0.015] transition-colors"
                         >
-                            <div className="flex items-center justify-between border-b border-black/5 dark:border-white/5 pb-2.5">
-                                <span className="text-xs font-sans font-bold text-[#2C2927] dark:text-neutral-200 flex items-center gap-1.5">
-                                    <span>{cat.icon}</span> {cat.categoryNumber}
-                                    . {cat.title}
-                                </span>
-                                <span className="text-[10px] text-neutral-400 font-sans">
+                            {/* 左カラム: カテゴリ名（仕様書の項目名風） */}
+                            <div className="md:col-span-4 lg:col-span-3 space-y-1">
+                                <div className="flex items-center gap-2">
+                                    <span className="text-sm">{cat.icon}</span>
+                                    <span className="font-bold text-xs sm:text-sm text-[#2C2927] dark:text-neutral-100 font-sans tracking-tight">
+                                        {cat.title}
+                                    </span>
+                                </div>
+                                <p className="text-[11px] font-mono text-neutral-400">
                                     {cat.subtitle}
-                                </span>
+                                </p>
                             </div>
 
-                            <div className="flex flex-wrap gap-2 text-xs font-mono">
+                            {/* 右カラム: スキル群とスペック詳細のグリッド */}
+                            <div className="md:col-span-8 lg:col-span-9 grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                                 {cat.skills.map((skill) => {
-                                    let badgeStyle =
-                                        "bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300";
+                                    // 習熟度に応じたスタイル定義
+                                    let cardStyle =
+                                        "bg-neutral-500/5 dark:bg-white/[0.03] border-black/5 dark:border-white/5";
+                                    let nameColor =
+                                        "text-neutral-700 dark:text-neutral-300";
+                                    let descColor =
+                                        "text-neutral-500 dark:text-neutral-400";
 
                                     if (skill.level === "daily") {
-                                        badgeStyle =
-                                            "bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300 border border-emerald-300/40 dark:border-emerald-700/40 font-bold";
+                                        // 中核・日常利用
+                                        cardStyle =
+                                            "bg-emerald-500/10 dark:bg-emerald-500/[0.12] border-emerald-500/20 dark:border-emerald-500/30";
+                                        nameColor =
+                                            "text-emerald-950 dark:text-emerald-200 font-bold";
+                                        descColor =
+                                            "text-emerald-800/80 dark:text-emerald-300/80";
                                     } else if (skill.level === "project") {
-                                        badgeStyle =
-                                            "bg-sky-50 dark:bg-sky-950/40 text-sky-700 dark:text-sky-300 border border-sky-300/40 dark:border-sky-700/40 font-semibold";
+                                        // 制作・プロジェクト実績
+                                        cardStyle =
+                                            "bg-sky-500/10 dark:bg-sky-500/[0.12] border-sky-500/20 dark:border-sky-500/30";
+                                        nameColor =
+                                            "text-sky-950 dark:text-sky-200 font-semibold";
+                                        descColor =
+                                            "text-sky-800/80 dark:text-sky-300/80";
                                     }
 
                                     return (
-                                        <span
+                                        <div
                                             key={skill.name}
-                                            className={`px-2.5 py-1 rounded-md transition ${badgeStyle}`}
-                                            title={skill.tooltip}
+                                            className={`p-2.5 rounded-xl border transition-all flex flex-col justify-between space-y-1 ${cardStyle}`}
                                         >
-                                            {skill.name}
-                                        </span>
+                                            <span
+                                                className={`text-xs font-mono tracking-tight ${nameColor}`}
+                                            >
+                                                {skill.name}
+                                            </span>
+                                            <p
+                                                className={`text-[11px] font-sans leading-relaxed ${descColor}`}
+                                            >
+                                                {skill.tooltip}
+                                            </p>
+                                        </div>
                                     );
                                 })}
                             </div>
