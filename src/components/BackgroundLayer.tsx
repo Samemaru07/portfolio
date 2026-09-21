@@ -11,7 +11,7 @@ export interface BackgroundSection {
 const defaultBackgrounds: BackgroundSection[] = [
     {
         id: "hero",
-        imageUrl: "/images/backgrounds/banpaku.JPG",
+        imageUrl: "/images/backgrounds/banpaku.png",
         alt: "Hero Background",
     },
     {
@@ -21,17 +21,17 @@ const defaultBackgrounds: BackgroundSection[] = [
     },
     {
         id: "profile",
-        imageUrl: "/images/backgrounds/precure.JPG",
+        imageUrl: "/images/backgrounds/precure.png",
         alt: "Profile Background",
     },
     {
         id: "environment",
-        imageUrl: "/images/backgrounds/unicorn.jpg",
+        imageUrl: "/images/backgrounds/unicorn.png",
         alt: "Environment Background",
     },
     {
         id: "links",
-        imageUrl: "/images/backgrounds/strikefreedom.jpg",
+        imageUrl: "/images/backgrounds/strikefreedom.png",
         alt: "Links Background",
     },
 ];
