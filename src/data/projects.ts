@@ -62,7 +62,7 @@ export const projects: Project[] = [
         repoUrl: "https://github.com/Samemaru07/seichi-diary_pro3-db-2Q",
         imageUrl: "/images/projects/pilgrimage-preview.png",
         thumbnailUrl: "/images/projects/pilgrimage-preview-thumbnail.png",
-        imageCaption: "ブログサイト ロケーション画面",
+        imageCaption: "ブログサイト トップ画面",
     },
     {
         id: "linebot",
@@ -81,7 +81,8 @@ export const projects: Project[] = [
         techStack: "LINE Messaging API / PHP / MySQL (XAMPP) / ngrok",
         // TODO: 画像
         repoUrl: "https://github.com/Samemaru07/Kongo_LINE",
-        imageUrl: "/images/projects/linebot-preview.jpg",
+        imageUrl: "/images/projects/linebot-preview.png",
+        thumbnailUrl: "/images/projects/linebot-preview_thumbnail.png ",
         imageCaption: "Bot 配信・対話システムイメージ",
     },
     {
@@ -127,8 +128,8 @@ export const projects: Project[] = [
         tags: ["#Hyper", "#Terminal"],
         techStack: "TypeScript / Node.js",
         repoUrl: null,
-        // TODO: 画像
-        imageUrl: "/images/projects/coming-soon.jpg",
-        imageCaption: "Hyper-webview-fork",
+        thumbnailUrl: "/images/projects/hyper-preview_thumbnail.png",
+        imageUrl: "/images/projects/hyper-preview.png",
+        imageCaption: "実装したHyper内SKKと背景画像",
     },
 ];
