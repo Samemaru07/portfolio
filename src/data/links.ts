@@ -15,8 +15,8 @@ export const externalLinks: {
     sns: [
         {
             title: "X (Twitter)",
-            handle: "@samemaru0830_07",
-            url: "https://x.com/samemaru0830_07",
+            handle: "@Samemaru07_0830",
+            url: "https://x.com/Samemaru07_0830",
         },
         {
             title: "Instagram",
