@@ -101,7 +101,8 @@ export default function ConceptTree() {
                             {/* profile child: me */}
                             <div className="flex items-center">
                                 <span className="text-neutral-400 select-none">
-                                    │&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;
+                                    {"\u200A"}
+                                    │&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;
                                 </span>
                                 <a
                                     href="#profile-me"
@@ -117,7 +118,8 @@ export default function ConceptTree() {
                             {/* profile child: philosophy */}
                             <div className="flex items-center">
                                 <span className="text-neutral-400 select-none">
-                                    │&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;
+                                    {"\u200A"}
+                                    │&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;
                                 </span>
                                 <a
                                     href="#profile-philosophy"
@@ -133,7 +135,8 @@ export default function ConceptTree() {
                             {/* profile child: skills */}
                             <div className="flex items-center">
                                 <span className="text-neutral-400 select-none">
-                                    │&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;
+                                    {"\u200A"}
+                                    │&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;
                                 </span>
                                 <a
                                     href="#skills"
@@ -149,7 +152,8 @@ export default function ConceptTree() {
                             {/* profile child: hobbies */}
                             <div className="flex items-center">
                                 <span className="text-neutral-400 select-none">
-                                    │&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;
+                                    {"\u200A"}
+                                    │&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;
                                 </span>
                                 <a
                                     href="#hobbies"
