@@ -141,12 +141,9 @@ export default function WorksSection() {
                         制作物
                     </h3>
                     <p className="text-xs sm:text-sm text-[#6B6560] dark:text-neutral-400 leading-relaxed pt-0.5">
-                        個人開発や学内で制作・改善してきたシステムや成果物です。運用のしやすさと課題解決を重視して設計しています。
+                        個人開発や学内で制作・改善してきたシステムや成果物です。
                     </p>
                 </div>
-                <span className="text-xs font-mono text-neutral-400 shrink-0 hidden sm:inline-block">
-                    Total: {projects.length} projects
-                </span>
             </div>
 
             {/* Grid */}
