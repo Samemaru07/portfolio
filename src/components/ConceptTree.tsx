@@ -100,8 +100,7 @@ export default function ConceptTree() {
 
                             {/* profile child: me */}
                             <div className="flex items-center">
-                                <span className="text-neutral-400 select-none">
-                                    {"\u200A"}
+                                <span className="text-neutral-400 select-none whitespace-pre">
                                     │&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;
                                 </span>
                                 <a
@@ -117,8 +116,7 @@ export default function ConceptTree() {
 
                             {/* profile child: philosophy */}
                             <div className="flex items-center">
-                                <span className="text-neutral-400 select-none">
-                                    {"\u200A"}
+                                <span className="text-neutral-400 select-none whitespace-pre">
                                     │&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;
                                 </span>
                                 <a
@@ -134,8 +132,7 @@ export default function ConceptTree() {
 
                             {/* profile child: skills */}
                             <div className="flex items-center">
-                                <span className="text-neutral-400 select-none">
-                                    {"\u200A"}
+                                <span className="text-neutral-400 select-none whitespace-pre">
                                     │&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;
                                 </span>
                                 <a
@@ -151,8 +148,7 @@ export default function ConceptTree() {
 
                             {/* profile child: hobbies */}
                             <div className="flex items-center">
-                                <span className="text-neutral-400 select-none">
-                                    {"\u200A"}
+                                <span className="text-neutral-400 select-none whitespace-pre">
                                     │&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;
                                 </span>
                                 <a
