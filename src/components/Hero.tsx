@@ -14,10 +14,10 @@ export default function Hero() {
                         alt="My Favorite Plastic Model"
                         className="w-full h-full object-cover object-center lg:object-right filter contrast-[1.05] saturate-[0.9] dark:saturate-[1.1] transform scale-100"
                     />
-                    {/* 1枚目：横方向（60%〜70%地点で完全に透明化を終わらせる） */}
-                    <div className="absolute inset-0 bg-gradient-to-r from-warm-50 via-warm-50/60 to-transparent via-40% to-60% dark:from-[#1A1918] dark:via-[#1A1918]/70 dark:to-transparent dark:via-40% dark:to-70%" />
+                    {/* 1枚目：横方向 */}
+                    <div className="absolute inset-0 bg-gradient-to-r from-warm-50 via-warm-50/80 to-warm-50/20 via-50% to-85% lg:from-warm-50 lg:via-warm-50/60 lg:to-transparent lg:via-40% lg:to-60% dark:from-[#1A1918] dark:via-[#1A1918]/80 dark:to-transparent dark:via-50% dark:to-85% dark:lg:from-[#1A1918] dark:lg:via-[#1A1918]/70 dark:lg:to-transparent dark:lg:via-40% dark:lg:to-70%" />
 
-                    {/* 2枚目：縦方向（上端のモヤを除去し、下端の切れ目だけを薄く馴染ませる） */}
+                    {/* 2枚目：縦方向 */}
                     <div className="absolute inset-0 bg-gradient-to-t from-warm-50/80 via-transparent to-transparent dark:from-[#1A1918]/70 dark:via-transparent dark:to-transparent" />
                 </div>
             </div>
@@ -60,17 +60,17 @@ export default function Hero() {
                         {/* Terminal Body */}
                         <div className="p-4 font-mono text-xs leading-tight overflow-x-auto select-all">
                             <div className="text-white/80 mb-1 font-semibold drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">
-                                $ cowsay &quot;Forget the cow. Look right.&quot;
+                                $ cowsay &quot;Look at the Nu GUNDAM.&quot;
                             </div>
                             <pre className="text-white font-bold whitespace-pre font-mono drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]">
-                                {` -----------------------------
-< Forget the cow. Look right. >
- -----------------------------
-                  \\   ^__^
-                   \\  (oo)\\______
-                      (__)\\      )\\/\\
-                          ||----w |
-                          ||     ||`}
+                                {` --------------------------
+< Look at the Nu GUNDAM. >
+ --------------------------
+        \\   ^__^
+         \\  (oo)\\_______
+            (__)\\       )\\/\\
+                ||----w |
+                ||     ||`}
                             </pre>
                         </div>
                     </div>
