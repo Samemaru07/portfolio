@@ -98,11 +98,11 @@ function ProjectModal({ project, onClose }: ModalProps) {
                     {/* Right Column: Image Preview */}
                     <div className="lg:col-span-5 flex flex-col justify-start">
                         <div className="rounded-2xl overflow-hidden bg-warm-100/70 dark:bg-[#161514] border border-black/5 dark:border-white/5 p-3 flex flex-col gap-2">
-                            <div className="aspect-[4/3] sm:aspect-[16/10] lg:aspect-[3/4] rounded-xl overflow-hidden bg-white dark:bg-neutral-800 border border-black/5 dark:border-white/5 relative flex items-center justify-center shadow-sm">
+                            <div className="w-full rounded-xl overflow-hidden bg-white dark:bg-neutral-800 border border-black/5 dark:border-white/5 relative flex items-center justify-center shadow-sm">
                                 <img
                                     src={project.imageUrl}
                                     alt={project.topTitle}
-                                    className="w-full h-full object-cover object-top"
+                                    className="w-full h-auto block object-contain"
                                     onError={(e) => {
                                         (
                                             e.currentTarget as HTMLImageElement
