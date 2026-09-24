@@ -25,10 +25,49 @@ const jetbrainsMono = JetBrains_Mono({
     display: "swap",
 });
 
+// SNS共有時のカード表示および検索エンジン最適化のためのメタデータ定義
 export const metadata: Metadata = {
-    title: "Samemaru's Portfolio",
+    metadataBase: new URL("https://samemaru.com"),
+    title: {
+        default: "Samemaru's Portfolio",
+        template: "%s | Samemaru's Portfolio",
+    },
     description:
         "設計から運用までをデザインする。高専4年生さめまるのポートフォリオサイト。",
+    keywords: [
+        "さめまる",
+        "ポートフォリオ",
+        "インフラエンジニア",
+        "Linux",
+        "高専生",
+        "Next.js",
+    ],
+    authors: [{ name: "さめまる", url: "https://samemaru.com" }],
+    creator: "さめまる",
+    openGraph: {
+        type: "website",
+        locale: "ja_JP",
+        url: "https://samemaru.com",
+        title: "Samemaru's Portfolio",
+        description:
+            "設計から運用までをデザインする。高専4年生さめまるのポートフォリオサイト。",
+        siteName: "Samemaru's Portfolio",
+        images: [
+            {
+                url: "/og-image.png",
+                width: 1200,
+                height: 630,
+                alt: "Samemaru's Portfolio",
+            },
+        ],
+    },
+    twitter: {
+        card: "summary_large_image",
+        title: "Samemaru's Portfolio",
+        description:
+            "設計から運用までをデザインする。高専4年生さめまるのポートフォリオサイト。",
+        images: ["/og-image.png"],
+    },
 };
 
 export default function RootLayout({
