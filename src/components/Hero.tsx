@@ -10,16 +10,16 @@ export default function Hero() {
             {/* Background / Right-side Blended Model Kit Layer */}
             <div className="absolute top-0 right-0 bottom-0 w-full lg:w-3/5 pointer-events-none select-none overflow-hidden">
                 <div className="relative w-full h-full">
-                    <div className="relative w-full h-full">
-                        <Image
-                            src="/images/hero-model.webp"
-                            alt="My Favorite Plastic Model"
-                            fill
-                            priority
-                            sizes="(max-width: 1024px) 100vw, 50vw"
-                            className="object-cover object-center lg:object-right filter contrast-[1.05] saturate-[0.9] dark:saturate-[1.1] transform scale-100"
-                        />
-                    </div>
+                    {/* ローカル画像最適化サーバーの処理待機を排除し、静的アセットを直接配信するためunoptimizedを指定 */}
+                    <Image
+                        src="/images/hero-model.webp"
+                        alt="My Favorite Plastic Model"
+                        fill
+                        priority
+                        unoptimized
+                        sizes="(max-width: 1024px) 100vw, 50vw"
+                        className="object-cover object-center lg:object-right filter contrast-[1.05] saturate-[0.9] dark:saturate-[1.1] transform scale-100"
+                    />
                     {/* 1枚目：横方向 */}
                     <div className="absolute inset-0 bg-gradient-to-r from-warm-50 via-warm-50/80 to-warm-50/20 via-50% to-85% lg:from-warm-50 lg:via-warm-50/60 lg:to-transparent lg:via-40% lg:to-60% dark:from-[#1A1918] dark:via-[#1A1918]/80 dark:to-transparent dark:via-50% dark:to-85% dark:lg:from-[#1A1918] dark:lg:via-[#1A1918]/70 dark:lg:to-transparent dark:lg:via-40% dark:lg:to-70%" />
 
