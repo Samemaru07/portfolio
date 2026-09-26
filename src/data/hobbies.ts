@@ -26,11 +26,11 @@ export const hobbiesData = {
                 "アニメを見ながら細かいパーツを削り・塗装し・組み上げていく時間が至福です。(画像は「HG 1/144 バルバトスルプスレクス」)",
             photos: [
                 {
-                    url: "/images/hobbies/gunpla-kit.png",
+                    url: "/images/hobbies/gunpla-kit.webp",
                     label: "プラモデル製作風景",
                 },
                 {
-                    url: "/images/hobbies/gunpla-comp.png",
+                    url: "/images/hobbies/gunpla-comp.webp",
                     label: "塗装・組み立て作業",
                 },
             ],
@@ -41,11 +41,11 @@ export const hobbiesData = {
                 "作中で描かれた場所を実際に歩いて同じ景色を堪能したり、現地イベントへ足を運んだりしています。(画像は「氷菓」 (岐阜県・高山市) / 「蒼穹のファフナー 20周年記念 尾道コラボ」 (広島県・尾道市))",
             photos: [
                 {
-                    url: "/images/hobbies/pilgrimage-scenery.png",
+                    url: "/images/hobbies/pilgrimage-scenery.webp",
                     label: "ロケ地・聖地探訪",
                 },
                 {
-                    url: "/images/hobbies/event-trip.png",
+                    url: "/images/hobbies/event-trip.webp",
                     label: "イベント参加・遠征記録",
                 },
             ],

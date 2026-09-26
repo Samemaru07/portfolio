@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import React, { useEffect, useState } from "react";
 
 export interface BackgroundSection {
@@ -11,27 +12,27 @@ export interface BackgroundSection {
 const defaultBackgrounds: BackgroundSection[] = [
     {
         id: "hero",
-        imageUrl: "/images/backgrounds/banpaku.png",
+        imageUrl: "/images/backgrounds/banpaku.webp",
         alt: "Hero Background",
     },
     {
         id: "works",
-        imageUrl: "/images/backgrounds/aobuta.png",
+        imageUrl: "/images/backgrounds/aobuta.webp",
         alt: "Works Background",
     },
     {
         id: "profile",
-        imageUrl: "/images/backgrounds/precure.png",
+        imageUrl: "/images/backgrounds/precure.webp",
         alt: "Profile Background",
     },
     {
         id: "environment",
-        imageUrl: "/images/backgrounds/unicorn.png",
+        imageUrl: "/images/backgrounds/unicorn.webp",
         alt: "Environment Background",
     },
     {
         id: "links",
-        imageUrl: "/images/backgrounds/strikefreedom.png",
+        imageUrl: "/images/backgrounds/strikefreedom.webp",
         alt: "Links Background",
     },
 ];
@@ -114,16 +115,15 @@ export default function BackgroundLayer({
                             isActive ? "opacity-100" : "opacity-0"
                         }`}
                     >
-                        <img
-                            src={sec.imageUrl}
-                            alt={sec.alt}
-                            className="w-full h-full object-cover object-center filter brightness-[0.95] dark:brightness-[0.8] contrast-[1.05]"
-                            onError={(e) => {
-                                (
-                                    e.currentTarget as HTMLImageElement
-                                ).style.display = "none";
-                            }}
-                        />
+                        <div className="relative w-full h-full">
+                            <Image
+                                src={sec.imageUrl}
+                                alt={sec.alt}
+                                fill
+                                sizes="100vw"
+                                className="object-cover object-center filter brightness-[0.95] dark:brightness-[0.8] contrast-[1.05]"
+                            />
+                        </div>
                     </div>
                 );
             })}

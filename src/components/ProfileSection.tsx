@@ -6,6 +6,7 @@ import {
 } from "@/data/profile";
 import { skillCategories } from "@/data/skills";
 import { hobbiesData } from "@/data/hobbies";
+import Image from "next/image";
 
 export default function ProfileSection() {
     // 中核スタック（daily）を自動抽出
@@ -533,11 +534,15 @@ export default function ProfileSection() {
                                             key={pIdx}
                                             className="group relative rounded-xl overflow-hidden bg-neutral-100 dark:bg-neutral-800 aspect-[4/3] border border-black/5 dark:border-white/5"
                                         >
-                                            <img
-                                                src={p.url}
-                                                alt={p.label}
-                                                className="w-full h-full object-cover group-hover:scale-105 transition duration-300"
-                                            />
+                                            <div className="relative w-full h-full">
+                                                <Image
+                                                    src={p.url}
+                                                    alt={p.label}
+                                                    fill
+                                                    sizes="(max-width: 768px) 100vw, 33vw"
+                                                    className="object-cover group-hover:scale-105 transition duration-300"
+                                                />
+                                            </div>
                                             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-2.5">
                                                 <span className="text-[11px] font-medium text-white">
                                                     {p.label}
