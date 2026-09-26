@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import React, { useEffect, useState } from "react";
 
 export interface BackgroundSection {
@@ -11,27 +12,27 @@ export interface BackgroundSection {
 const defaultBackgrounds: BackgroundSection[] = [
     {
         id: "hero",
-        imageUrl: "/images/backgrounds/banpaku.png",
+        imageUrl: "/images/backgrounds/banpaku.webp",
         alt: "Hero Background",
     },
     {
         id: "works",
-        imageUrl: "/images/backgrounds/aobuta.png",
+        imageUrl: "/images/backgrounds/aobuta.webp",
         alt: "Works Background",
     },
     {
         id: "profile",
-        imageUrl: "/images/backgrounds/precure.png",
+        imageUrl: "/images/backgrounds/precure.webp",
         alt: "Profile Background",
     },
     {
         id: "environment",
-        imageUrl: "/images/backgrounds/unicorn.png",
+        imageUrl: "/images/backgrounds/unicorn.webp",
         alt: "Environment Background",
     },
     {
         id: "links",
-        imageUrl: "/images/backgrounds/strikefreedom.png",
+        imageUrl: "/images/backgrounds/strikefreedom.webp",
         alt: "Links Background",
     },
 ];
@@ -54,7 +55,6 @@ export default function BackgroundLayer({
             const clientHeight = window.innerHeight;
             const scrollHeight = document.documentElement.scrollHeight;
 
-            // 1. ページ最上部（スクロール開始前）は確実に先頭セクション
             if (scrollY < 80) {
                 if (sections[0]) {
                     setActiveSectionId(sections[0].id);
@@ -62,7 +62,6 @@ export default function BackgroundLayer({
                 return;
             }
 
-            // 2. ページ最下部に到達した際は確実に末尾セクション
             if (scrollY + clientHeight >= scrollHeight - 50) {
                 const lastSection = sections[sections.length - 1];
                 if (lastSection) {
@@ -71,7 +70,6 @@ export default function BackgroundLayer({
                 return;
             }
 
-            // 3. 画面の中央ライン（ビューポート高さの45%〜50%）にあるセクションを検出
             const viewportCenter = scrollY + clientHeight * 0.3;
 
             for (let i = sections.length - 1; i >= 0; i--) {
@@ -82,7 +80,6 @@ export default function BackgroundLayer({
                 const rect = el.getBoundingClientRect();
                 const elementTop = rect.top + scrollY;
 
-                // セクションの上端が画面中央ラインを通過している一番下のものをアクティブにする
                 if (elementTop <= viewportCenter) {
                     setActiveSectionId(sec.id);
                     break;
@@ -91,7 +88,7 @@ export default function BackgroundLayer({
         };
 
         window.addEventListener("scroll", handleScroll, { passive: true });
-        handleScroll(); // 初期描画時にも実行
+        handleScroll();
 
         return () => {
             window.removeEventListener("scroll", handleScroll);
@@ -103,7 +100,7 @@ export default function BackgroundLayer({
             aria-hidden="true"
             className="fixed inset-0 -z-10 pointer-events-none overflow-hidden select-none"
         >
-            {/* 1. 背景画像スタック（クロスフェード） */}
+            {/* 全背景要素をDOMに維持し、CSSトランジションによる確実なクロスフェードを実現 */}
             {sections.map((sec) => {
                 const isActive = sec.id === activeSectionId;
 
@@ -114,24 +111,21 @@ export default function BackgroundLayer({
                             isActive ? "opacity-100" : "opacity-0"
                         }`}
                     >
-                        <img
-                            src={sec.imageUrl}
-                            alt={sec.alt}
-                            className="w-full h-full object-cover object-center filter brightness-[0.95] dark:brightness-[0.8] contrast-[1.05]"
-                            onError={(e) => {
-                                (
-                                    e.currentTarget as HTMLImageElement
-                                ).style.display = "none";
-                            }}
-                        />
+                        <div className="relative w-full h-full">
+                            <Image
+                                src={sec.imageUrl}
+                                alt={sec.alt}
+                                fill
+                                sizes="100vw"
+                                priority={sec.id === sections[0]?.id}
+                                className="object-cover object-center filter brightness-[0.95] dark:brightness-[0.8] contrast-[1.05]"
+                            />
+                        </div>
                     </div>
                 );
             })}
 
-            {/* 2. 可読性保護用オーバーレイ（ライト / ダーク共通） */}
             <div className="absolute inset-0 bg-warm-50/83 dark:bg-[#1A1918]/85 backdrop-blur-[3px] transition-colors duration-500" />
-
-            {/* 3. 上下端のソフトグラデーション */}
             <div className="absolute inset-0 bg-gradient-to-b from-warm-50/40 via-transparent to-warm-50/60 dark:from-[#1A1918]/40 dark:via-transparent dark:to-[#1A1918]/60 pointer-events-none" />
         </div>
     );

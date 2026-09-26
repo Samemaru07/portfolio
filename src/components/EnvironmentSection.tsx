@@ -1,4 +1,5 @@
 import { configRepos, environmentItems } from "@/data/environment";
+import Image from "next/image";
 import React from "react";
 
 export default function EnvironmentSection() {
@@ -27,11 +28,16 @@ export default function EnvironmentSection() {
                         <div className="space-y-3">
                             {/* Image Preview */}
                             <div className="group relative rounded-xl overflow-hidden bg-neutral-100 dark:bg-neutral-800 aspect-[16/10] border border-black/5 dark:border-white/5">
-                                <img
-                                    src={item.imageUrl}
-                                    alt={item.title}
-                                    className="w-full h-full object-cover group-hover:scale-105 transition duration-300"
-                                />
+                                <div className="relative w-full h-full">
+                                    <Image
+                                        src={item.imageUrl}
+                                        alt={item.title}
+                                        fill
+                                        loading="lazy"
+                                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                                        className="object-cover group-hover:scale-105 transition duration-300"
+                                    />
+                                </div>
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-2.5">
                                     <span className="text-[11px] font-mono text-white">
                                         {item.badgeLabel}

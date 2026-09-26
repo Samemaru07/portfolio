@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import Image from "next/image";
 import { projects } from "@/data/projects";
 import { Project } from "@/types";
 
@@ -28,7 +29,6 @@ function ProjectModal({ project, onClose }: ModalProps) {
             <div className="absolute inset-0" onClick={onClose} />
 
             <div className="relative w-full max-w-5xl bg-white dark:bg-[#1E1D1B] rounded-2xl sm:rounded-3xl shadow-2xl border border-black/10 dark:border-white/10 overflow-hidden flex flex-col max-h-[90vh] z-10 animate-in fade-in zoom-in-95 duration-200">
-                {/* Modal Header */}
                 <div className="px-6 sm:px-8 py-3.5 bg-neutral-100/80 dark:bg-[#161514] border-b border-black/5 dark:border-white/5 flex items-center justify-between select-none">
                     <span className="text-xs sm:text-sm font-sans font-medium text-neutral-500 dark:text-neutral-400">
                         {project.topTitle}
@@ -55,9 +55,7 @@ function ProjectModal({ project, onClose }: ModalProps) {
                     </button>
                 </div>
 
-                {/* Modal Body */}
                 <div className="p-6 sm:p-8 md:p-10 overflow-y-auto grid grid-cols-1 lg:grid-cols-12 gap-8 text-[#2C2927] dark:text-[#EAE6E1]">
-                    {/* Left Column: Description & TechStack */}
                     <div className="lg:col-span-7 space-y-6 flex flex-col justify-between">
                         <div className="space-y-4">
                             <div className="flex items-center justify-between flex-wrap gap-3">
@@ -84,7 +82,6 @@ function ProjectModal({ project, onClose }: ModalProps) {
                             </div>
                         </div>
 
-                        {/* Tech Stack */}
                         <div className="space-y-2 pt-4 border-t border-black/5 dark:border-white/5">
                             <h4 className="text-sm font-bold tracking-tight text-[#2C2927] dark:text-white">
                                 使用言語・技術など
@@ -95,20 +92,16 @@ function ProjectModal({ project, onClose }: ModalProps) {
                         </div>
                     </div>
 
-                    {/* Right Column: Image Preview */}
                     <div className="lg:col-span-5 flex flex-col justify-start">
                         <div className="rounded-2xl overflow-hidden bg-warm-100/70 dark:bg-[#161514] border border-black/5 dark:border-white/5 p-3 flex flex-col gap-2">
                             <div className="w-full rounded-xl overflow-hidden bg-white dark:bg-neutral-800 border border-black/5 dark:border-white/5 relative flex items-center justify-center shadow-sm">
-                                <img
+                                <Image
                                     src={project.imageUrl}
                                     alt={project.topTitle}
+                                    width={1200}
+                                    height={800}
                                     className="w-full h-auto block object-contain"
-                                    onError={(e) => {
-                                        (
-                                            e.currentTarget as HTMLImageElement
-                                        ).src =
-                                            "https://placehold.co/800x1000/252422/ffffff?text=Preview+Image";
-                                    }}
+                                    sizes="(max-width: 1024px) 100vw, 400px"
                                 />
                             </div>
                             {project.imageCaption && (
@@ -134,7 +127,6 @@ export default function WorksSection() {
             id="works"
             className="pt-12 border-t border-black/5 dark:border-white/5 space-y-6 scroll-mt-20"
         >
-            {/* Header */}
             <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-2">
                 <div className="space-y-1">
                     <h3 className="text-2xl font-bold text-[#2C2927] dark:text-white">
@@ -146,7 +138,6 @@ export default function WorksSection() {
                 </div>
             </div>
 
-            {/* Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {projects.map((project) => {
                     const displayThumbnail =
@@ -159,39 +150,29 @@ export default function WorksSection() {
                             className="cursor-pointer p-6 rounded-2xl border transition flex flex-col justify-between group bg-white/70 dark:bg-[#252422] border-black/5 dark:border-white/5 shadow-sm hover:shadow-md hover:-translate-y-1"
                         >
                             <div className="space-y-3">
-                                {/* Visual Header Box: サムネイル画像プレビュー */}
                                 <div className="relative h-36 rounded-xl overflow-hidden bg-warm-100 dark:bg-[#1E1D1B] border border-black/5 dark:border-white/5">
-                                    <img
+                                    <Image
                                         src={displayThumbnail}
                                         alt={project.cardTitle}
-                                        className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300"
-                                        onError={(e) => {
-                                            (
-                                                e.currentTarget as HTMLImageElement
-                                            ).src =
-                                                "https://placehold.co/600x400/252422/ffffff?text=" +
-                                                encodeURIComponent(
-                                                    project.categoryBadge,
-                                                );
-                                        }}
+                                        fill
+                                        loading="lazy"
+                                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 380px"
+                                        className="object-cover object-top group-hover:scale-105 transition-transform duration-300"
                                     />
                                     <div className="absolute top-2.5 left-2.5 px-2 py-0.5 rounded-md bg-black/60 text-white text-[10px] font-mono font-medium shadow-sm">
                                         {project.categoryBadge}
                                     </div>
                                 </div>
 
-                                {/* Title */}
                                 <h4 className="font-bold text-base flex items-center gap-2 group-hover:text-amber-600 dark:group-hover:text-amber-400 transition text-[#2C2927] dark:text-white">
                                     <span>{project.cardTitle}</span>
                                 </h4>
 
-                                {/* Summary */}
                                 <p className="text-xs text-[#6B6560] dark:text-neutral-400 leading-relaxed">
                                     {project.summary}
                                 </p>
                             </div>
 
-                            {/* Footer / Tags */}
                             <div className="flex items-center justify-between pt-3 mt-4 border-t border-black/5 dark:border-white/5">
                                 <div className="flex flex-wrap gap-1.5 text-[11px] font-mono text-neutral-500">
                                     {project.tags.map((tag) => (
@@ -212,7 +193,6 @@ export default function WorksSection() {
                 })}
             </div>
 
-            {/* Modal */}
             {selectedProject && (
                 <ProjectModal
                     project={selectedProject}

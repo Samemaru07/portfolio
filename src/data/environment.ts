@@ -6,7 +6,7 @@ export const environmentItems: EnvironmentItem[] = [
         icon: "🐧",
         title: "Arch Linux & Neovim",
         badgeLabel: "Arch Linux Desktop",
-        imageUrl: "/images/environment/arch-desktop.png",
+        imageUrl: "/images/environment/arch-desktop.webp",
         description:
             "ローリングリリースで最新の技術に触れられるArch LinuxをメインOSに採用。エディタはキーバインドからプラグインまで自作設定を施したNeovimで高速コーディングを行っています。",
         tags: ["#ArchLinux", "#Neovim", "#Dotfiles"],
@@ -16,7 +16,7 @@ export const environmentItems: EnvironmentItem[] = [
         icon: "🖥️",
         title: "自作PC",
         badgeLabel: "Custom Workstation",
-        imageUrl: "/images/environment/custom-pc.png",
+        imageUrl: "/images/environment/custom-pc.webp",
         description:
             "パーツ選定から組み立て・配線まで自身で行ったメインマシン。どんな重い作業もお手の物。中身は2代目で、ファフナー・マークアレス & 戦艦「金剛」",
         specs: "CPU: AMD Ryzen 7 5700X / GPU: NVIDIA GeForce RTX 5060Ti 16GB / RAM: 32GB / SSD: 1TB / etc...",
@@ -27,7 +27,7 @@ export const environmentItems: EnvironmentItem[] = [
         icon: "⌨️",
         title: "分割キーボード",
         badgeLabel: "Split Keyboard",
-        imageUrl: "/images/environment/split-keyboard.png ",
+        imageUrl: "/images/environment/split-keyboard.webp",
         description:
             "肩や手首への負担を軽減し、長時間のリサーチやコーディングを快適にする左右分離型キーボードを愛用。キーキャップ・キースイッチ・テンティングスタンドをカスタマイズ。キーマップのファームウェアも用途に合わせて最適化しています。",
         specs: "Corne v4.1",
