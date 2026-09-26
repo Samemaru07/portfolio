@@ -4,11 +4,13 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
+// CJKフォントの大量サブセット一斉プリロードによる帯域圧迫を防ぐためpreloadを無効化
 const zenKaku = Zen_Kaku_Gothic_New({
     weight: ["400", "500", "700"],
     subsets: ["latin"],
     variable: "--font-zen-kaku",
     display: "swap",
+    preload: false,
 });
 
 const caveat = Caveat({
