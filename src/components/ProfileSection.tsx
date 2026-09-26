@@ -539,7 +539,8 @@ export default function ProfileSection() {
                                                     src={p.url}
                                                     alt={p.label}
                                                     fill
-                                                    sizes="(max-width: 768px) 100vw, 33vw"
+                                                    loading="lazy"
+                                                    sizes="(max-width: 640px) 50vw, (max-width: 1024px) 25vw, 20vw"
                                                     className="object-cover group-hover:scale-105 transition duration-300"
                                                 />
                                             </div>

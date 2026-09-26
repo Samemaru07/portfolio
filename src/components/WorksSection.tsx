@@ -155,7 +155,8 @@ export default function WorksSection() {
                                         src={displayThumbnail}
                                         alt={project.cardTitle}
                                         fill
-                                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                        loading="lazy"
+                                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 380px"
                                         className="object-cover object-top group-hover:scale-105 transition-transform duration-300"
                                     />
                                     <div className="absolute top-2.5 left-2.5 px-2 py-0.5 rounded-md bg-black/60 text-white text-[10px] font-mono font-medium shadow-sm">
