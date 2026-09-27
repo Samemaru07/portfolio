@@ -82,7 +82,7 @@ export const projects: Project[] = [
         // TODO: 画像
         repoUrl: "https://github.com/Samemaru07/Kongo_LINE",
         imageUrl: "/images/projects/linebot-preview.webp",
-        thumbnailUrl: "/images/projects/linebot-preview_thumbnail.webp ",
+        thumbnailUrl: "/images/projects/linebot-preview_thumbnail.webp",
         imageCaption: "Bot 配信・対話システムイメージ",
     },
     {
