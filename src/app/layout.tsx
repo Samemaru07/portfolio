@@ -29,7 +29,7 @@ const jetbrainsMono = JetBrains_Mono({
 
 // SNS共有時のカード表示および検索エンジン最適化のためのメタデータ定義
 export const metadata: Metadata = {
-    metadataBase: new URL("https://samemaru.com"),
+    metadataBase: new URL("https://samemaru.vercel.app"),
     title: {
         default: "Samemaru's Portfolio",
         template: "%s | Samemaru's Portfolio",
@@ -44,12 +44,12 @@ export const metadata: Metadata = {
         "高専生",
         "Next.js",
     ],
-    authors: [{ name: "さめまる", url: "https://samemaru.com" }],
+    authors: [{ name: "さめまる", url: "https://samemaru.vercel.app" }],
     creator: "さめまる",
     openGraph: {
         type: "website",
         locale: "ja_JP",
-        url: "https://samemaru.com",
+        url: "https://samemaru.vercel.app",
         title: "Samemaru's Portfolio",
         description:
             "設計から運用までをデザインする。高専4年生さめまるのポートフォリオサイト。",
