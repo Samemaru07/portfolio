@@ -30,6 +30,9 @@ const jetbrainsMono = JetBrains_Mono({
 // SNS共有時のカード表示および検索エンジン最適化のためのメタデータ定義
 export const metadata: Metadata = {
     metadataBase: new URL("https://samemaru.vercel.app"),
+    verification: {
+        google: "1Vex4O2GOCm3yqlfpb6KuJAZjtKA2L9jSnrPwUucHoc",
+    },
     title: {
         default: "Samemaru's Portfolio",
         template: "%s | Samemaru's Portfolio",
