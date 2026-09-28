@@ -5,10 +5,12 @@ import ProfileSection from "@/components/ProfileSection";
 import EnvironmentSection from "@/components/EnvironmentSection";
 import LinksSection from "@/components/LinksSection";
 import BackgroundLayer from "@/components/BackgroundLayer";
+import { LoadingScreen } from "@/components/LoadingScreen";
 
 export default function Home() {
     return (
         <div>
+            <LoadingScreen />
             <BackgroundLayer />
             <div className="space-y-16 relative z-0">
                 <section id="hero">
